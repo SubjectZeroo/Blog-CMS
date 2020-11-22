@@ -14,6 +14,8 @@
                         <h1 class="page-header">
                            Bienvenido Al Sistema
                             <small>Sistemas</small>
+
+                            <?php echo $_SESSION['username'] ?>
                         </h1>
                         <!-- <ol class="breadcrumb">
                             <li>
