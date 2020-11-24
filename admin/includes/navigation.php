@@ -160,7 +160,7 @@
 
            </li>
            <li>
-             <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> Profiles</a>
+             <a href="profiles.php"><i class="fa fa-fw fa-dashboard"></i> Profiles</a>
            </li>
          </ul>
        </div>
