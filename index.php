@@ -26,12 +26,9 @@
               $post_content =substr($row['post_content'], 0, 200) ;
               $post_status = $row['post_status'];
                     
-              if($post_status !== 'published') {
+              if($post_status == 'published') {
 
-                echo "<h1> No hay post </h1>";
-
-
-              } else {
+             
 
                 ?>
             <h1 class="page-header">

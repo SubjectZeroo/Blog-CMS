@@ -36,7 +36,9 @@ $query .= "VALUES (
 
     $create_user = mysqli_query($connection, $query);
 
+// confirmQuery($create_user);
 
+Echo "User Created " . " " . "<a href='users.php'>View User</a>";
     if(!$create_user) {
       die("QUERY FAILED" . mysqli_error($connection));
     }
