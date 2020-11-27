@@ -114,8 +114,8 @@ $query .= "VALUES ({$post_category_id},
 
 
 <div class="form-group">
-  <label for="">Post Title</label>
-   <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
+  <label for="">Post Content</label>
+   <textarea class="form-control" name="post_content" id="editor" cols="30" rows="10"></textarea>
 </div>
 
 <div class="form-group">
@@ -123,3 +123,11 @@ $query .= "VALUES ({$post_category_id},
 </div>
 
 </form>
+<script>
+
+ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

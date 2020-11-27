@@ -160,9 +160,9 @@
 
                 <?php 
                 
-                $query = "SELECT * FROM posts WHERE  post_status = 'draft'";
-                $select_all_draft_posts = mysqli_query($connection,$query);
-                $draft_counts = mysqli_num_rows($select_all_draft_posts);   
+                $query = "SELECT * FROM posts WHERE  post_status = 'published'";
+                $select_all_published_posts = mysqli_query($connection,$query);
+                $published_counts = mysqli_num_rows($select_all_published_posts);   
                 
 
                 $query = "SELECT * FROM post_comments WHERE  comment_status = 'unapproved'";
@@ -189,7 +189,7 @@
                         <?php 
                         $element_text = ['Active Posts','Draft Posts', 'Categories', 'Users','Comments', 'Pending Comments' ];
                         
-                        $element_count = [$post_counts,$draft_counts, $categories_counts,  $users_counts, $comments_counts,  $unapproved_comments_count];
+                        $element_count = [$post_counts,$published_counts, $categories_counts,  $users_counts, $comments_counts,  $unapproved_comments_count];
                         
                         for($i = 0; $i < 5; $i++) {
 

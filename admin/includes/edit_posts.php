@@ -63,6 +63,9 @@ if(empty($post_image)) {
   if(!$update_post) {
     die("QUERY FAILED" . mysqli_error($connection));
   }
+
+  echo "Post Update";
+  echo "<p class='bg-success'> Post Updated. <a href='../post.php?p_id={$the_post_id}'> View Post</a> <a href='../post.php'> Edit More Post</a> </p>";
 }
 
 ?>
@@ -100,12 +103,26 @@ if(empty($post_image)) {
   <label for="">Post Author</label>
     <input value="<?php echo $post_author ?>" class="form-control" name="post_author" type="text">
 </div>
-
-
+<div class="form-group">
+  <select name="post_status" id=""> 
+                <option value="0">Eliga Uno</option>
+                <?php
+                
+                if($post_status == 'published'){
+                  echo  "<option value='draft'>Draft</option>";
+                }else{
+                  echo  "<option value='published'>Published</option>";
+                }
+                
+                ?>
+              
+  </select>
+</div>
+<!-- 
 <div class="form-group">
   <label for="">Post Status</label>
     <input value="<?php echo $post_status ?>" class="form-control" name="post_status" type="text">
-</div>
+</div> -->
 
 
 <div class="form-group">
