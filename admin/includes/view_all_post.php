@@ -8,11 +8,20 @@ if(isset($_POST['checkBoxArray'])){
 
     switch( $bulk_options){
       case 'published':
-      $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
+        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
 
-      $update_to_published_status = mysqli_query($connection, $query);
+        $update_to_published_status = mysqli_query($connection, $query);
       break;
-
+      case 'draft':
+        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
+  
+        $update_to_draft_status = mysqli_query($connection, $query);
+      break;
+      case 'delete':
+        $query = "DELETE FROM posts  WHERE post_id = {$postValueId}";
+  
+        $update_to_delete_status = mysqli_query($connection, $query);
+      break;
     }
 
 
@@ -45,7 +54,7 @@ if(isset($_POST['checkBoxArray'])){
       </div>
                           <thead>
                             <tr>
-                             
+                              <th></th>
                               <th>Id</th>
                               <th>Author</th>
                               <th>Title</th>
@@ -58,7 +67,7 @@ if(isset($_POST['checkBoxArray'])){
                              
                               <th>Delete</th>
                               <th>Edit</th>
-                             
+                              <th>View</th>
                             </tr>
                           </thead>                     
                           <tbody>
@@ -106,6 +115,7 @@ if(isset($_POST['checkBoxArray'])){
                                     echo "<td> $post_date</td> ";
                                     echo "<td><a href='posts.php?delete={$post_id}'> Delete</a></td> ";
                                     echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td> ";
+                                    echo "<td><a href='/post.php?p_id={$post_id}'>View</a></td> ";
                                     echo "</tr>";
                                 }
                                 ?>

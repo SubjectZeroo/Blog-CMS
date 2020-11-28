@@ -45,6 +45,10 @@ $query .= "VALUES ({$post_category_id},
     if(!$create_post_query) {
       die("QUERY FAILED" . mysqli_error($connection));
     }
+
+    $the_post_id = mysqli_insert_id($connection);
+
+    echo "<p class='bg-success'> Post Updated. <a href='../post.php?p_id={$the_post_id}'> View Post</a> <a href='../post.php'> Edit More Post</a> </p>";
 }
 
 
@@ -97,7 +101,12 @@ $query .= "VALUES ({$post_category_id},
 
 <div class="form-group">
   <label for="">Post Status</label>
-    <input class="form-control" name="post_status" type="text">
+    <!-- <input class="form-control" name="post_status" type="text"> -->
+    <select name="post_status" id="">
+      <option value=""> Select Status </option>
+      <option value="draft"> Draft </option>
+      <option value="published"> Publish </option>
+    </select>
 </div>
 
 
