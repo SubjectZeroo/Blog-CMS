@@ -9,9 +9,11 @@
     <meta name="author" content="">
 
     <title>Blog Home - Start Bootstrap Template</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <link rel="stylesheet" href="/css/blog-post.css">
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
 
     <!-- Custom CSS -->
     <link href="css/blog-home.css" rel="stylesheet">
@@ -27,3 +29,7 @@
 </head>
 
 <body>
+<?php include  "includes/navigation.php"?>
+<section class="section">
+    <div class="container">
+        <div class="columns is-mobile is-centered">

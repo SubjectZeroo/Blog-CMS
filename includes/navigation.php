@@ -1,61 +1,91 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="index.php">
+      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    </a>
 
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.php">Start Bootstrap</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                   
-                    <?php   
-                    $query = "SELECT * FROM categories";
-                    $select_all_categories_query = mysqli_query($connection, $query);
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+<!-- 
+      <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
+        Documentation
+      </a> -->
+      <?php   
+            $query = "SELECT * FROM categories";
+            $select_all_categories_query = mysqli_query($connection, $query);
                     
                     while($row = mysqli_fetch_assoc( $select_all_categories_query)) {
                       $cat_title = $row['category_title'];
 
-                      echo "<li> <a href='#'>{$cat_title}</a></li>";
+                      echo " <a class='navbar-item'  href='#'>{$cat_title}</a>";
                     }
                     
-                    ?>
-                     <li>
-                        <a href="admin">Admin</a>
-                    </li>
+        ?>
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
+        </a>
 
-                    <li>
-                        <a href="/registration.php">Registration</a>
-                    </li>
-                   
-                    <a href=""></a>
-                    <!-- <li>
-                        <a href="#">Services</a>
-                    </li> -->
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    <?php 
-                    var_dump($_SESSION['user_role']);
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            About
+          </a>
+          <a class="navbar-item">
+            Jobs
+          </a>
+          <a class="navbar-item">
+            Contact
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">
+            Report an issue
+          </a>
+        </div>
+      </div> -->
+      <?php 
+                    // var_dump($_SESSION['user_role']);
+                    // var_dump( $_SESSION['username']);
                      if(isset($_SESSION['user_role'])) {
                         if(isset($_GET['p_id'])) {
                             $the_post_id = $_GET['p_id'];
-                            echo "<li><a href='/admin/posts.php?source=edit_post&p_id={$the_post_id}'>Edit Post</a></li>";
+                            echo "<a class='navbar-item' href='/admin/posts.php?source=edit_post&p_id={$the_post_id}'>Edit Post</a>";
                         }
                      }                  
-                    ?>
-                    <!-- <li>
-                        <a href="#">Admin</a>
-                    </li> -->
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+      ?>
+    </div>
+
+    <div class="navbar-end">
+      <!-- <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a>
         </div>
-        <!-- /.container -->
-    </nav>
+      </div> -->
+      <div class="navbar-item">
+        <div class="buttons">
+          <button class="button is-primary modal-button" data-target="modal" aria-haspopup="true" onclick="refs.modalLogin.open()"> <strong>Log In </strong> </button>
+          <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+        </div>
+       
+        
+      </div>
+    </div>
+  </div>
+</nav>
