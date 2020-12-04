@@ -4,7 +4,7 @@
             General
           </p>
           <ul class="menu-list">
-            <li> <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
+            <li> <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a></li>
           </ul>
           <p class="menu-label">
             Post
@@ -31,7 +31,6 @@
           <ul class="menu-list">
             <li> <a href="users.php">View Users</a></li>
             <li><a href="users.php?source=add_user">Add User</a></li>
-            <li><a>Balance</a></li>
           </ul>
           <p class="menu-label">
             Profiles
@@ -40,7 +39,5 @@
             <li>  <a href="profiles.php"><i class="fa fa-fw fa-dashboard"></i> Profiles</a></li>
             
           </ul>
-
-    </nav>
-    
+    </nav>  
 </aside>

@@ -1,4 +1,3 @@
-
 <?php 
 if(isset($_POST['create_user'])) {
 
@@ -46,55 +45,59 @@ Echo "User Created " . " " . "<a href='users.php'>View User</a>";
 
 ?>
 
-
-
-
-
 <form action="" method="post" enctype="multipart/form-data">
 
-    <div class="form-group">
-      <label for="">Firtsname</label>
-        <input class="form-control" name="user_firtsname" type="text">
+  <div class="field">
+    <label class="label" for="">Firtsname</label>
+    <div class="control">
+       <input class="input" name="user_firtsname" type="text">
     </div>
+  </div>
 
 
-    <div class="form-group">
-      <label for="">Lastname</label>
-        <input class="form-control" name="user_lastname" type="text">
+  <div class="field">
+    <label class="label" for="">Lastname</label>
+    <input class="input" name="user_lastname" type="text">
+  </div>
+
+
+  <div class="field">
+    <div class="select">
+      <select name="user_role" id="user_role">
+        <option selected value='0'>Seleccione</option>
+        <option value='admin'>admin</option>
+        <option value='subcriber'>subcriber</option>
+      </select>
     </div>
-
-
-<div class="form-group">
- <select name="user_role" id="user_role">
-  <option selected value ='0'>Seleccione</option>
-  <option value ='admin'>admin</option>
-  <option value ='subcriber'>subcriber</option>
- </select>
-</div>
+  </div>
 
 
 
 
-<div class="form-group">
-  <label for="username">Username</label>
-    <input class="form-control" name="username" type="text">
-</div>
+  <div class="field">
+    <label class="label" for="username">Username</label>
+    <input class="input" name="username" type="text">
+  </div>
 
 
-<div class="form-group">
-  <label for="user_email">Email</label>
-   <input class="form-control" name="user_email" type="text"></input>
-</div>
+  <div class="field">
+    <label class="label" for="user_email">Email</label>
+    <div class="control">
+      <input class="input" name="user_email" type="text"></input>
+    </div>
+  </div>
 
 
 
-<div class="form-group">
-  <label for="user_password">Password</label>
-   <input class="form-control" name="user_password" type="text"></input>
-</div>
+  <div class="field">
+    <label class="label" for="user_password">Password</label>
+    <div class="control">
+      <input class="input" name="user_password" type="text"></input>  
+    </div>
+  </div>
 
-<div class="form-group">
-  <input class="btn btn-primary" type="submit" name="create_user" value="Add User">
-</div>
+  <div class="control">
+    <input class="button is-link is-light" type="submit" name="create_user" value="Add User">
+  </div>
 
 </form>

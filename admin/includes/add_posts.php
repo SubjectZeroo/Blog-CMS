@@ -1,4 +1,3 @@
-
 <?php 
 if(isset($_POST['create_post'])) {
   $post_title = $_POST['post_title'];
@@ -62,81 +61,103 @@ $query .= "VALUES ({$post_category_id},
 
 <form action="" method="post" enctype="multipart/form-data">
 
-<div class="form-group">
-  <label for="">Post Title</label>
-    <input class="form-control" name="post_title" type="text">
-</div>
-<!-- 
+    <div class="field">
+        <label class="label" for="">Post Title</label>
+        <div class="control">
+            <input class="input" name="post_title" type="text">
+        </div>
+
+    </div>
+    <!-- 
 
 <div class="form-group">
   <label for="">Post Category </label>
     <input class="form-control" name="post_category_id" type="text">
 </div> -->
 
-<div class="form-group">
- <select name="post_category" id="post_category">
- <?php 
- 
- $query = "SELECT * FROM categories ";
- $select_categories = mysqli_query($connection, $query);
+    <div class="field">
+        <div class="control">
+            <div class="select">
+                <select name="post_category" id="post_category">
+                    <?php 
+        
+        $query = "SELECT * FROM categories ";
+        $select_categories = mysqli_query($connection, $query);
 
-                while($row = mysqli_fetch_assoc($select_categories)) {
-                       $cat_id = $row['category_id'];
-                       $cat_title = $row['category_title'];
+                        while($row = mysqli_fetch_assoc($select_categories)) {
+                              $cat_id = $row['category_id'];
+                              $cat_title = $row['category_title'];
 
-                        echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                }
- 
- ?>
- <option value ='0'>Seleccione</option>
- </select>
-</div>
+                                echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                        }
+        
+        ?>
+                    <option value='0'>Seleccione</option>
+                </select>
+            </div>
+        </div>
 
-
-<div class="form-group">
-  <label for="">Post Author</label>
-    <input class="form-control" name="post_author" type="text">
-</div>
-
-
-<div class="form-group">
-  <label for="">Post Status</label>
-    <!-- <input class="form-control" name="post_status" type="text"> -->
-    <select name="post_status" id="">
-      <option value=""> Select Status </option>
-      <option value="draft"> Draft </option>
-      <option value="published"> Publish </option>
-    </select>
-</div>
+    </div>
 
 
-<div class="form-group">
-  <label for="image">Post Image</label>
-    <input class="form-control" name="image" type="file">
-</div>
+    <div class="field">
+        <label class="label" for="">Post Author</label>
+        <div class="control">
+            <input class="input" name="post_author" type="text">
+        </div>
+    </div>
 
 
-<div class="form-group">
-  <label for="">Post Tags</label>
-    <input class="form-control" name="post_tags" type="text">
-</div>
+    <div class="field">
+        <label class="label" for="">Post Status</label>
+        <div class="select">
+            <div class="control">
+                <select name="post_status" id="">
+                    <option value=""> Select Status </option>
+                    <option value="draft"> Draft </option>
+                    <option value="published"> Publish </option>
+                </select>
+            </div>
+        </div>
+    </div>
 
 
-<div class="form-group">
-  <label for="">Post Content</label>
-   <textarea class="form-control" name="post_content" id="editor" cols="30" rows="10"></textarea>
-</div>
+    <div class="file">
+        <label class="file-label">
+            <input class="file-input" type="file" name="resume">
+            <span class="file-cta">
+            <span class="file-icon">
+                <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+                Cargar Imagen...
+            </span>
+            </span>
+        </label>
+    </div>
 
-<div class="form-group">
-  <input class="btn btn-primary" type="submit" name="create_post" value="Publish Post">
-</div>
+
+    <div class="field">
+        <label class="label" for="post_tags">Post Tags</label>
+        <div class="control">
+            <input class="input" name="post_tags" type="text">
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label" for="">Post Content</label>
+        <textarea class="form-control" name="post_content" id="editor" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="control">
+        <input class="button is-link" type="submit" name="create_post" value="Publish Post">
+    </div>
 
 </form>
 <script>
-
-ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    ClassicEditor
+        .create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
 </script>

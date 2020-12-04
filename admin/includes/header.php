@@ -12,6 +12,7 @@ if(!isset($_SESSION['user_role'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +23,8 @@ if(!isset($_SESSION['user_role'])){
     <!-- Custom CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
- <link rel="stylesheet" href="/admin/css/sb-admin.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+    <link rel="stylesheet" href="/admin/css/sb-admin.css">
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -37,8 +39,9 @@ if(!isset($_SESSION['user_role'])){
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
     <script src="/admin/js/scripts.js"></script>
 </head>
+
 <body>
-<?php include  "../admin/includes/navigation-admin.php"?>
-    <section class=" main-content columns is-fullheight ">
-        <!-- <div class="container"> -->
-        <?php include  "../admin/includes/sidebar-admin.php"?>
+    <?php include  "../admin/includes/navigation-admin.php"?>
+    <div class="wrapper">
+        <div class="">
+            <?php include  "../admin/includes/sidebar-admin.php"?>

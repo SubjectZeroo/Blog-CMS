@@ -73,77 +73,100 @@ if(empty($post_image)) {
 
 <form action="" method="post" enctype="multipart/form-data">
 
-<div class="form-group">
-  <label for="">Post Title</label>
-    <input  value="<?php echo $post_title ?>" class="form-control" name="post_title" type="text">
-</div>
+  <div class="field">
+    <label class="label" for="">Post Title</label>
+    <div class="control">
+      <input class="input" value="<?php echo $post_title ?>" class="form-control" name="post_title" type="text">
+    </div>
+  </div>
 
 
-<div class="form-group">
- <select name="post_category" id="post_category">
- <?php 
- 
- $query = "SELECT * FROM categories ";
- $select_categories = mysqli_query($connection, $query);
+  <div class="field">
+    <div class="select">
+      <select name="post_category" id="post_category">
+        <?php 
+  
+  $query = "SELECT * FROM categories ";
+  $select_categories = mysqli_query($connection, $query);
 
-                while($row = mysqli_fetch_assoc($select_categories)) {
-                       $cat_id = $row['category_id'];
-                       $cat_title = $row['category_title'];
+                  while($row = mysqli_fetch_assoc($select_categories)) {
+                        $cat_id = $row['category_id'];
+                        $cat_title = $row['category_title'];
 
-                        echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                }
- 
- ?>
- <option value ='0'>Seleccione</option>
- </select>
-</div>
+                          echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                  }
+  
+  ?>
+        <option value='0'>Seleccione</option>
+      </select>
+    </div>
+
+  </div>
 
 
-<div class="form-group">
-  <label for="">Post Author</label>
-    <input value="<?php echo $post_author ?>" class="form-control" name="post_author" type="text">
-</div>
-<div class="form-group">
-  <select name="post_status" id=""> 
-                <option value="0">Eliga Uno</option>
-                <?php
-                
-                if($post_status == 'published'){
-                  echo  "<option value='draft'>Draft</option>";
-                }else{
-                  echo  "<option value='published'>Published</option>";
-                }
-                
-                ?>
-              
-  </select>
-</div>
-<!-- 
+  <div class="field">
+    <label class="label" for="">Post Author</label>
+    <div class="control">
+      <input class="input" value="<?php echo $post_author ?>" class="form-control" name="post_author" type="text">
+    </div>
+  </div>
+  <div class="field">
+    <div class="select">
+      <select name="post_status" id="">
+        <option value="0">Eliga Uno</option>
+        <?php
+                  
+                  if($post_status == 'published'){
+                    echo  "<option value='draft'>Draft</option>";
+                  }else{
+                    echo  "<option value='published'>Published</option>";
+                  }
+                  
+                  ?>
+
+      </select>
+    </div>
+
+  </div>
+  <!-- 
 <div class="form-group">
   <label for="">Post Status</label>
     <input value="<?php echo $post_status ?>" class="form-control" name="post_status" type="text">
 </div> -->
+  <!-- 
+  <div class="form-group">
+    <label for="image">Post Image</label>
+    <input class="form-control" name="image" type="file">
+  </div> -->
+    <div class="file">
+      <label class="file-label">
+        <input class="file-input" type="file" name="image">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose a file…
+          </span>
+        </span>
+      </label>
+    </div>
+    <div class="field">
+      <label class="label" for="">Post Tags</label>
+      <div class="control">
+        <input class="input" value="<?php echo $post_tags ?>" class="form-control" name="post_tags" type="text">
+      </div>
+    </div>
 
 
-<div class="form-group">
-  <label for="image">Post Image</label>
-    <input  class="form-control" name="image" type="file">
-</div>
+    <div class="field">
+      <label class="label" for="">Post Content</label>
+      <textarea class="textarea" name="post_content" id="" cols="30"
+        rows="10"> <?php echo  $post_content ?></textarea>
+    </div>
 
-
-<div class="form-group">
-  <label for="">Post Tags</label>
-    <input value="<?php echo $post_tags ?>" class="form-control" name="post_tags" type="text">
-</div>
-
-
-<div class="form-group">
-  <label for="">Post Content</label>
-   <textarea class="form-control" name="post_content" id="" cols="30" rows="10"> <?php echo  $post_content ?></textarea>
-</div>
-
-<div class="form-group">
-  <input class="btn btn-primary" type="submit" name="update_post" value="Update Post">
-</div>
+    <div class="form-group">
+      <input class="button is-success" type="submit" name="update_post" value="Update Post">
+    </div>
 
 </form>

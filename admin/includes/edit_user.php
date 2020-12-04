@@ -78,57 +78,68 @@ if(isset($_POST['edit_user'])) {
 
 <form action="" method="post" enctype="multipart/form-data">
 
-    <div class="form-group">
-      <label for="">Firtsname</label>
-        <input class="form-control" value="<?php  echo $user_firtsname;  ?>" name="user_firtsname" type="text">
+  <div class="field">
+    <label class="label" for="">Firtsname</label>
+    <div class="control">
+      <input class="input" class="form-control" value="<?php  echo $user_firtsname;  ?>" name="user_firtsname"
+        type="text">
+    </div>
+  </div>
+
+
+  <div class="field">
+    <label class="label" for="">Lastname</label>
+    <div class="control">
+      <input class="input" class="form-control" value="<?php  echo $user_lastname;  ?>" name="user_lastname"
+        type="text">
+    </div>
+  </div>
+
+
+  <div class="field">
+    <div class="select">
+      <select name="user_role" id="user_role">
+
+        <option selected value='0'><?php echo $user_role; ?></option>
+        <?php 
+    if($user_role == 'admin') {
+
+    echo " <option value ='subcriber'>subcriber</option>";
+    } else {
+    echo "<option value ='admin'>admin</option>";
+    }
+    ?>
+      </select>
     </div>
 
+  </div>
 
-    <div class="form-group">
-      <label for="">Lastname</label>
-        <input class="form-control" value="<?php  echo $user_lastname;  ?>" name="user_lastname" type="text">
-    </div>
+  <div class="field">
+    <label class="label" for="username">Username</label>
+    <div class="control">
+      <input class="input" value="<?php  echo $username;  ?>" name="username" type="text">
+    </div>  
+  </div>
 
 
-<div class="form-group">
-
- <select name="user_role" id="user_role">
-
- <option selected value ='0'><?php echo $user_role; ?></option>
-<?php 
-if($user_role == 'admin') {
-
- echo " <option value ='subcriber'>subcriber</option>";
-} else {
-  echo "<option value ='admin'>admin</option>";
-}
-?>
- </select>
-</div>
+  <div class="field">
+    <label class="label" for="user_email">Email</label>
+    <div class="control">
+      <input class="input" value="<?php  echo $user_email;  ?>" name="user_email" type="text"></input>
+    </div>  
+  </div>
 
 
 
+  <div class="field">
+    <label class="label" for="user_password">Password</label>
+    <div class="control">
+      <input class="input" class="form-control" value="<?php  echo $user_password;  ?>" name="user_password" type="text"></input>
+    </div>  
+  </div>
 
-<div class="form-group">
-  <label for="username">Username</label>
-    <input class="form-control" value="<?php  echo $username;  ?>" name="username" type="text">
-</div>
-
-
-<div class="form-group">
-  <label for="user_email">Email</label>
-   <input class="form-control" value="<?php  echo $user_email;  ?>" name="user_email" type="text"></input>
-</div>
-
-
-
-<div class="form-group">
-  <label for="user_password">Password</label>
-   <input class="form-control" value="<?php  echo $user_password;  ?>" name="user_password" type="text"></input>
-</div>
-
-<div class="form-group">
-  <input class="btn btn-primary" type="submit" name="edit_user" value="Add User">
-</div>
+  <div class="field">
+    <input class="button is-success" type="submit" name="edit_user" value="Add User">
+  </div>
 
 </form>

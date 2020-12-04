@@ -1,20 +1,20 @@
-<table class="table-bordered table table-hover">
-                          <thead>
-                            <tr>
-                              <th>Id</th>
-                              <th>Author</th>
-                              <th>Comment</th>
-                              <th>Email</th>
-                              <th>Status</th>
-                              <th>In Response to</th>
-                              <th>Date</th>
-                              <th>Aprove</th>
-                              <th>Unaprove</th>
-                              <th>Delete</th>
-                            </tr>
-                          </thead>                     
-                          <tbody>
-                            <?php 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Author</th>
+      <th>Comment</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>In Response to</th>
+      <th>Date</th>
+      <th>Aprove</th>
+      <th>Unaprove</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
                                 $query = "SELECT * FROM post_comments";
                                 $select_comments = mysqli_query($connection, $query);                       
                                 while($row = mysqli_fetch_assoc($select_comments)) {
@@ -74,11 +74,11 @@
                                     echo "</tr>";
                                 }
                                 ?>
-                          </tbody> 
-                       </table>                     
+  </tbody>
+</table>
 
 
-                       <?php 
+<?php 
 
 
 

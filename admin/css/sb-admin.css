@@ -3,7 +3,7 @@ html {
   }
   
   body {
-    color: #ffffff;
+    /* color: #ffffff; */
   }
   
   .sidebar {
@@ -70,11 +70,11 @@ html {
     z-index: -2;
     left: 0;
     right: 0;
-    background-image: -webkit-radial-gradient(top, circle cover, #353944 0%, #272b32 70%);
+    /* background-image: -webkit-radial-gradient(top, circle cover, #353944 0%, #272b32 70%);
     background-image: -moz-radial-gradient(center, circle cover, #353944 0%, #272b32 70%);
     background-image: -o-radial-gradient(center, circle cover, #353944 0%, #272b32 70%);
     background-image: radial-gradient(center, circle cover, #353944 0%, #272b32 70%);
-    background-position: 50%, 50%;
+    background-position: 50%, 50%; */
   }
   
   .sidebar,

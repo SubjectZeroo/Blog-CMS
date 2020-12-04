@@ -1,17 +1,17 @@
-<table class="table-bordered table table-hover">
-                          <thead>
-                            <tr>
-                              <th>Id</th>
-                              <th>Username</th>
-                              <th>Firts Name</th>
-                              <th>Last Name</th>
-                              <th>Email</th>
-                              <th>Role</th>
-                              <th>Date</th>   
-                            </tr>
-                          </thead>                     
-                          <tbody>
-                            <?php 
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Firts Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php 
                                 $query = "SELECT * FROM users";
                                 $select_users = mysqli_query($connection, $query);                       
                                 while($row = mysqli_fetch_assoc($select_users)) {
@@ -74,11 +74,11 @@
                                     echo "</tr>";
                                 }
                                 ?>
-                          </tbody> 
-                       </table>                     
+  </tbody>
+</table>
 
 
-                       <?php 
+<?php 
 
 
 
@@ -89,22 +89,16 @@
                   header("Location: users.php");
                   }   
 
-
-
                     if(isset($_GET['change_to_subscriber'])) {
                       $the_user_id = $_GET['change_to_subscriber'];
                     $query = "UPDATE users SET user_role = 'subscriber' WHERE id = $the_user_id";
                     $change_user_query = mysqli_query($connection, $query);
                     header("Location: users.php");
                     }   
-
-
-
-
                         if(isset($_GET['delete'])) {
                           $the_user_id = $_GET['delete'];
                         $query = "DELETE FROM users WHERE id = {$the_user_id}";
                         $delete_user_query = mysqli_query($connection, $query);
                         header("Location: users.php");
                         }                       
-                       ?>
+?>
