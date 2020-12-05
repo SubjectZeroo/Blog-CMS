@@ -2,8 +2,8 @@
 <?php include  "includes/header.php"?>
 
 <div class="modal" id="modalLogin">
-  <div class="modal-background"></div>
-  <div class="modal-content">
+    <div class="modal-background"></div>
+    <div class="modal-content">
         <div class="section-login box">
             <h4 class="title">Login</h4>
             <form action="includes/login.php" method="POST">
@@ -13,11 +13,11 @@
                         <input name="username" type="text" class="input" placeholder="Enter Username">
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
-                            </span>
-                            <span class="icon is-small is-right">
+                        </span>
+                        <span class="icon is-small is-right">
                             <i class="fas fa-check"></i>
                         </span>
-                    </p>       
+                    </p>
                 </div>
                 <div class="field">
                     <label class="label">Password</label>
@@ -25,31 +25,59 @@
                         <input name="password" type="password" class="input" placeholder="Enter password">
                         <span class="icon is-small is-left">
                             <i class="fas fa-lock"></i>
-                            </span>
-                            <span class="icon is-small is-right">
+                        </span>
+                        <span class="icon is-small is-right">
                             <i class="fas fa-check"></i>
                         </span>
                     </p>
-                    
+
                 </div>
                 <div class="field">
                     <p class="control">
                         <button class="button is-success" name="login" type="submit">
-                        Login
+                            Login
                         </button>
                     </p>
                 </div>
             </form>
         </div>
-  </div>
- 
-  <button class="modal-close is-large" aria-label="close" onclick="refs.modalLogin.close()"></button>
+    </div>
+
+    <button class="modal-close is-large" aria-label="close" onclick="refs.modalLogin.close()"></button>
 </div>
 
 <!-- Page Content -->
 <div class="column is-9">
     <?php
-                    $query = "SELECT * from posts WHERE post_status = 'published' ";
+ $per_page = 2;
+if(isset($_GET['page'])) {
+ 
+    $page = $_GET['page'];
+  
+} else {
+    $page = "";
+}
+
+if($page == "" || $page == 1){
+    $page_1 = 0;
+}else {
+    $page_1 = ($page *  $per_page) - $per_page;
+}
+
+
+
+
+
+
+$select_posts_query_count = "SELECT * FROM posts";
+$find_count = mysqli_query($connection, $query);
+$count = mysqli_num_rows($find_count);
+
+$count = ceil($count /  $per_page);
+
+
+
+                    $query = "SELECT * from posts WHERE post_status = 'published' LIMIT $page_1 ,  $per_page";
                     $select_all_posts_query = mysqli_query($connection, $query);
                                 
                     while($row = mysqli_fetch_assoc( $select_all_posts_query)) {
@@ -63,51 +91,57 @@
                                 
                         if($post_status == 'published') {
 
-                        
-
-                ?>
-    
-        <div class="card">
-            <div class="card-image">
-                <!-- <figure class="image is-4by3"> -->
-                    <img src="http://placehold.it/1000x420" alt="Placeholder image">
-                <!-- </figure> -->
-            </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-64x64">
-                            <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4"> <a href="index.php"><?=$post_author?></a></p>
-                        <time datetime="2016-1-1"><?= $post_date ?></time>
-                        <!-- <p class="subtitle is-6">@johnsmith</p> -->
-                    </div>
-                </div>
-                <div class="content">
-                    <h1 class="title">
-                        <a href="post.php?p_id=<?= $post_id ;?>"><?= $post_title ?></a>
-                    </h1>
-                    <?= $post_content ?>
                     
-                    <a class="btn btn-primary" href="post.php?p_id=<?= $post_id ;?>">Leer Mas... </a>
+                ?>
+
+    <div class="card mt-3">
+        <div class="card-image">
+            <!-- <figure class="image is-4by3"> -->
+            <img src="http://placehold.it/1000x420" alt="Placeholder image">
+            <!-- </figure> -->
+        </div>
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-64x64">
+                        <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png"
+                            alt="Placeholder image">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-4"> <a href="index.php"><?=$post_author?></a></p>
+                    <time datetime="2016-1-1"><?= $post_date ?></time>
+                    <!-- <p class="subtitle is-6">@johnsmith</p> -->
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="title">
+                    <a href="post.php?p_id=<?= $post_id ;?>"><?= $post_title ?></a>
+                </h1>
+                <?= $post_content ?>
+
+                <a class="btn btn-primary" href="post.php?p_id=<?= $post_id ;?>">Leer Mas... </a>
             </div>
         </div>
-        <?php }   }?>
     </div>
+    <?php }   }?>
 
-    <!-- Pager -->
-    <!-- <ul class="pager">
-                        <li class="previous">
-                            <a href="#">&larr; Older</a>
-                        </li>
-                        <li class="next">
-                            <a href="#">Newer &rarr;</a>
-                        </li>
-                    </ul> -->
+    <nav class="pagination mt-3" role="navigation" aria-label="pagination">
+            <ul class="pagination-list">
+                
+                <?php 
+                    for($i = 1; $i <= $count; $i++) {
+                        echo "<li><a href='index.php?page={$i}' class='pagination-link' aria-label=''>{$i}</a></li>";
+                    }
+
+                ?>
+            </ul>
+    </nav>
 </div>
 <hr>
+
+
 <?php include  "includes/sidebar.php"?>
+
+
 <?php include  "includes/footer.php"?>

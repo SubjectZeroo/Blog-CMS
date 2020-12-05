@@ -23,7 +23,7 @@
     <div class="card">
         <div class="card-image">
             <!-- <figure class="image is-4by3"> -->
-                <img src="http://placehold.it/1200x420" alt="Placeholder image">
+            <img src="http://placehold.it/1200x420" alt="Placeholder image">
             <!-- </figure> -->
         </div>
         <div class="card-content">
@@ -100,7 +100,7 @@
                     <div class="control">
                         <input type="text" name="comment_author" class="input" name="comment_author">
                     </div>
-                    
+
                 </div>
 
                 <div class="field">
@@ -108,7 +108,7 @@
                     <div class="control">
                         <input type="email" name="comment_email" class="input" name="comment_email">
                     </div>
-                    
+
                 </div>
 
                 <div class="field">
@@ -116,7 +116,7 @@
                     <div class="control">
                         <textarea name="comment_content" class="textarea" rows="3"></textarea>
                     </div>
-                    
+
                 </div>
                 <button type="submit" name="create_comment" class="button is-success">Postear</button>
             </form>
@@ -158,9 +158,8 @@
     </div>
 
     <!-- Blog Sidebar Widgets Column -->
-    
 </div>
 <!-- /.row -->
-<?php include  "includes/sidebar.php"?>
 <hr>
+<?php include  "includes/sidebar.php"?>
 <?php include  "includes/footer.php"?>

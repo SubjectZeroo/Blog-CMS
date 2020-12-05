@@ -1,6 +1,7 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,9 +28,8 @@
 
 
 </head>
-
 <body>
-<?php include  "includes/navigation.php"?>
-<section class="section">
-    <div class="container">
-        <div class="columns is-mobile is-centered">
+    <?php include  "includes/navigation.php"?>
+    <section class="section">
+        <div class="container">
+            <div class="columns is-mobile is-centered">

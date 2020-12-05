@@ -13,11 +13,14 @@
         <div class="col-md-8">
 
 
-        <?php
+            <?php
 
 if(isset($_GET['category'])) {
  $post_category =  $_GET['category'];
 }
+
+
+
 
 
         $query = "SELECT * from posts WHERE post_category_id =  $post_category";
@@ -53,7 +56,7 @@ if(isset($_GET['category'])) {
             <hr>
             <?php        }
  ?>
-      
+
 
             <!-- Pager -->
             <!-- <ul class="pager">
@@ -73,6 +76,6 @@ if(isset($_GET['category'])) {
     <!-- /.row -->
 
     <hr>
-    <?php include  "includes/footer.php"?>
 
-    
+ 
+    <?php include  "includes/footer.php"?>
