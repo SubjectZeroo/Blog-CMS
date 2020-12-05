@@ -30,20 +30,16 @@ $select_user_query = mysqli_query($connection, $query);
   }
   // $password = crypt($password,   $db_password);
 
-  if($username ===  $db_username && $password ===  $db_password) {
-
-
+  if(password_verify($password,  $db_password)) {
     $_SESSION['username'] =  $db_username;
     $_SESSION['user_firtsname'] =  $db_firstname;
     $_SESSION['user_lastname'] =  $db_lastname;
     $_SESSION['user_role'] =  $db_role;
     header("Location: ../admin");
-
+  
 
   } else {
-
-    header("Location: ../index.php");
-
+     header("Location: ../index.php");
   }
 
 }
