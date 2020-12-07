@@ -1,9 +1,8 @@
 <?php include "includes/header.php" ?>
 
-<main class="main" id="wrapper">  
-          <?php 
-                       
-                       if(isset($_GET['source'])) {
+<main class="main" id="wrapper">
+  <?php      
+                if(isset($_GET['source'])) {
                          $source = $_GET['source'];
                        } else {
                          $source = " ";

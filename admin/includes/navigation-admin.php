@@ -29,11 +29,9 @@
 
 ?>
 
-
-
 <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="../index.php">
       <!-- <img src="https://bulma.io/images/bulma-logo.png"
         alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28"> -->
         Mini CRM
@@ -46,13 +44,32 @@
     </a>
 
   </div>
-  <div class="navbar-end">
-      
+  <div class="navbar-end">    
       <div class="navbar-item">
             Users Online:
             <?php echo $count_user;?>
       </div>
-     
-    </div>
-   
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link" >
+        <?php 
+           if(isset($_SESSION['username'])){
+              echo $_SESSION['username'];
+           }
+    
+           
+           
+           ?>
+        </a>
+        <div class="navbar-dropdown is-right">
+          <a class="navbar-item" href="profiles.php">
+            Edit Profile
+          </a>
+          
+          <hr class="navbar-divider">
+          <a class="navbar-item" href="/admin/includes/logout.php">
+            Log Out
+          </a>
+        </div>
+      </div>
+  </div> 
 </nav>

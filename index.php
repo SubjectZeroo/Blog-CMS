@@ -83,7 +83,7 @@ $count = ceil($count /  $per_page);
                     while($row = mysqli_fetch_assoc( $select_all_posts_query)) {
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
-                        $post_author = $row['post_author'];
+                        $post_user = $row['post_user'];
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
                         $post_content = substr($row['post_content'], 0, 200) ;
@@ -109,7 +109,7 @@ $count = ceil($count /  $per_page);
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-4"> <a href="index.php"><?=$post_author?></a></p>
+                    <p class="title is-4"> <a href="index.php"><?=$post_user?></a></p>
                     <time datetime="2016-1-1"><?= $post_date ?></time>
                     <!-- <p class="subtitle is-6">@johnsmith</p> -->
                 </div>

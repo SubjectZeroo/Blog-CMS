@@ -1,5 +1,5 @@
 <?php include "includes/header.php" ?> 
-
+<main class="main">
 <table class="table">
   <thead>
     <tr>
@@ -110,4 +110,7 @@
                         header("Location: post_comments.php?id=". $_GET['id'] ."");
                         }                       
                        ?>
+
+
+</main>
 <?php include "includes/footer.php" ?>

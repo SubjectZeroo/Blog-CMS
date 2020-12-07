@@ -1,7 +1,7 @@
 <?php 
 if(isset($_POST['create_post'])) {
   $post_title = $_POST['post_title'];
-  $post_author = $_POST['post_author'];
+  $post_user = $_POST['post_user'];
   
   $post_category_id = $_POST['post_category'];
   $post_status = $_POST['post_status'];
@@ -18,7 +18,7 @@ if(isset($_POST['create_post'])) {
 
   $query = "INSERT INTO posts(post_category_id, 
                               post_title, 
-                              post_author, 
+                              post_user, 
                               post_date, 
                               post_image, 
                               post_content, 
@@ -30,7 +30,7 @@ if(isset($_POST['create_post'])) {
 
 $query .= "VALUES ({$post_category_id},
                    '{$post_title}',
-                   '{$post_author}',
+                   '{$post_user}',
                     now(),
                    '{$post_image}',
                    '{$post_content}',
@@ -79,6 +79,7 @@ $query .= "VALUES ({$post_category_id},
         <div class="control">
             <div class="select">
                 <select name="post_category" id="post_category">
+                     <option value='0'>Seleccione</option>
                     <?php 
         
         $query = "SELECT * FROM categories ";
@@ -92,7 +93,7 @@ $query .= "VALUES ({$post_category_id},
                         }
         
         ?>
-                    <option value='0'>Seleccione</option>
+                    
                 </select>
             </div>
         </div>
@@ -100,11 +101,35 @@ $query .= "VALUES ({$post_category_id},
     </div>
 
 
-    <div class="field">
+    <!-- <div class="field">
         <label class="label" for="">Post Author</label>
         <div class="control">
             <input class="input" name="post_author" type="text">
         </div>
+    </div> -->
+    <div class="field">
+        <div class="control">
+            <div class="select">
+                <select name="post_user" id="post_user">
+                    <option value='0'>Seleccione</option>
+                    <?php 
+        
+                             $query = "SELECT * FROM users ";
+                            $select_users = mysqli_query($connection, $query);
+
+                        while($row = mysqli_fetch_assoc($select_users)) {
+                              $user_id = $row['id'];
+                              $username = $row['username'];
+
+                                echo "<option value='{$user_id}'>{$username}</option>";
+                        }
+        
+        ?>
+                 
+                </select>
+            </div>
+        </div>
+
     </div>
 
 
