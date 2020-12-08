@@ -1,5 +1,12 @@
 <?php include "includes/db.php" ?>
 <?php include  "includes/header.php"?>
+<?php require_once ("model/post/post.model.php"); 
+
+$Posts = new Post();
+$ListPosts  = $Posts->showPosts();
+$ListPosts->fetch(PDO::FETCH_ASSOC);
+
+?>
 
 <div class="modal" id="modalLogin">
     <div class="modal-background"></div>
@@ -48,52 +55,13 @@
 
 <!-- Page Content -->
 <div class="column is-9">
-    <?php
- $per_page = 2;
-if(isset($_GET['page'])) {
- 
-    $page = $_GET['page'];
-  
-} else {
-    $page = "";
-}
 
-if($page == "" || $page == 1){
-    $page_1 = 0;
-}else {
-    $page_1 = ($page *  $per_page) - $per_page;
-}
-
-
-
-
-
-
-$select_posts_query_count = "SELECT * FROM posts";
-$find_count = mysqli_query($connection, $query);
-$count = mysqli_num_rows($find_count);
-
-$count = ceil($count /  $per_page);
-
-
-
-                    $query = "SELECT * from posts WHERE post_status = 'published' LIMIT $page_1 ,  $per_page";
-                    $select_all_posts_query = mysqli_query($connection, $query);
-                                
-                    while($row = mysqli_fetch_assoc( $select_all_posts_query)) {
-                        $post_id = $row['post_id'];
-                        $post_title = $row['post_title'];
-                        $post_user = $row['post_user'];
-                        $post_date = $row['post_date'];
-                        $post_image = $row['post_image'];
-                        $post_content = substr($row['post_content'], 0, 200) ;
-                        $post_status = $row['post_status'];
-                                
-                        if($post_status == 'published') {
-
-                    
-                ?>
-
+    <?php foreach ($ListPosts as $Post): ?>
+        <?php 
+        // echo('<pre>');
+        //  var_dump($Post);
+        // echo('</pre>');
+        ?>
     <div class="card mt-3">
         <div class="card-image">
             <!-- <figure class="image is-4by3"> -->
@@ -109,39 +77,32 @@ $count = ceil($count /  $per_page);
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-4"> <a href="index.php"><?=$post_user?></a></p>
-                    <time datetime="2016-1-1"><?= $post_date ?></time>
+                    <p class="title is-4"> <a href="index.php"><?=$Post['post_author']?></a></p>
+                    <time datetime="2016-1-1"><?= $Post['post_date'] ?></time>
                     <!-- <p class="subtitle is-6">@johnsmith</p> -->
                 </div>
             </div>
             <div class="content">
                 <h1 class="title">
-                    <a href="post.php?p_id=<?= $post_id ;?>"><?= $post_title ?></a>
+                    <a href="post.php?p_id=<?= $Post['post_id'] ;?>"><?= $Post['post_title'] ?></a>
                 </h1>
-                <?= $post_content ?>
+                <?= $Post['post_content'] ?>
 
-                <a class="btn btn-primary" href="post.php?p_id=<?= $post_id ;?>">Leer Mas... </a>
+                <a class="btn btn-primary" href="post.php?p_id=<?= $Post['post_id'] ;?>">Leer Mas... </a>
             </div>
         </div>
     </div>
-    <?php }   }?>
-
+    <?php endforeach; ?> 
     <nav class="pagination mt-3" role="navigation" aria-label="pagination">
-            <ul class="pagination-list">
-                
-                <?php 
-                    for($i = 1; $i <= $count; $i++) {
-                        echo "<li><a href='index.php?page={$i}' class='pagination-link' aria-label=''>{$i}</a></li>";
-                    }
-
-                ?>
-            </ul>
+        <ul class="pagination-list">
+            <?php 
+                    // for($i = 1; $i <= $count; $i++) {
+                    //     echo "<li><a href='index.php?page={$i}' class='pagination-link' aria-label=''>{$i}</a></li>";
+                    // }
+            ?>
+        </ul>
     </nav>
 </div>
 <hr>
-
-
 <?php include  "includes/sidebar.php"?>
-
-
 <?php include  "includes/footer.php"?>
