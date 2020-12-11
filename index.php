@@ -1,11 +1,17 @@
-<?php include "includes/db.php" ?>
+
 <?php include  "includes/header.php"?>
 <?php require_once ("model/post/post.model.php"); 
-
+ $limit = 6;
 $Posts = new Post();
 $ListPosts  = $Posts->showPosts();
-$ListPosts->fetch(PDO::FETCH_ASSOC);
+$CountPost = $Posts->countPosts();
+$Lista = $ListPosts->fetchAll(PDO::FETCH_ASSOC);
 
+
+$count = $CountPost->fetchAll(PDO::FETCH_ASSOC);
+
+$total = $count[0]['id'];
+$pages = ceil($total / $limit);
 ?>
 
 <div class="modal" id="modalLogin">
@@ -56,7 +62,7 @@ $ListPosts->fetch(PDO::FETCH_ASSOC);
 <!-- Page Content -->
 <div class="column is-9">
 
-    <?php foreach ($ListPosts as $Post): ?>
+    <?php foreach ($Lista as $Post): ?>
         <?php 
         // echo('<pre>');
         //  var_dump($Post);
@@ -95,11 +101,12 @@ $ListPosts->fetch(PDO::FETCH_ASSOC);
     <?php endforeach; ?> 
     <nav class="pagination mt-3" role="navigation" aria-label="pagination">
         <ul class="pagination-list">
-            <?php 
-                    // for($i = 1; $i <= $count; $i++) {
-                    //     echo "<li><a href='index.php?page={$i}' class='pagination-link' aria-label=''>{$i}</a></li>";
-                    // }
-            ?>
+            <?php for($i = 1; $i <= $pages; $i++) : ?>
+                <li>
+                    <a href='index.php?page=<?=$i; ?>' class='pagination-link' aria-label=''><?= $i; ?></a>
+                </li>
+            <?php endfor; ?>  
+            
         </ul>
     </nav>
 </div>

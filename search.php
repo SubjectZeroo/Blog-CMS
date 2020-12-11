@@ -1,94 +1,44 @@
 <?php include "includes/db.php" ?>
 <?php include  "includes/header.php"?>
+<?php 
+$Posts = new Post();
+$SearchPost  = $Posts->searchPost($_POST['search']);
+$ListAllSearchPost = $SearchPost->fetchAll(PDO::FETCH_ASSOC);
+?>
+<div class="column is-9">
+      <?php foreach ($ListAllSearchPost as $ListAllSearchPosts): ?>
+        <div class="card">
+            <div class="card-image">
+                <!-- <figure class="image is-4by3"> -->
+                <img src="http://placehold.it/1200x420" alt="Placeholder image">
+                <!-- </figure> -->
+            </div>
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-64x64">
+                            <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png"
+                                alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-4"> <a href="index.php"><?=$ListAllSearchPosts['post_author']?></a></p>
+                        <time datetime="2016-1-1"><?= $ListAllSearchPosts['post_date'] ?></time>
+                        <!-- <p class="subtitle is-6">@johnsmith</p> -->
+                    </div>
+                </div>
+                <div class="content">
+                    <h1 class="title">
+                        <a href="post.php?p_id=<?= $ListAllSearchPosts['post_id'] ;?>"><?= $ListAllSearchPosts['post_title'] ?></a>
+                    </h1>
+                    <?= $ListAllSearchPosts['post_content'] ?>
 
-<!-- Navigation -->
-<?php include  "includes/navigation.php"?>
-
-<!-- Page Content -->
-<div class="container">
-
-  <div class="row">
-
-    <!-- Blog Entries Column -->
-    <div class="col-md-8">
-
-
-      <?php
-
-
-
-
-        if(isset($_POST['submit'])){
-          $search =  $_POST['search'];
-
-
-          $query = "SELECT * FROM posts WHERE post_tags  LIKE  '%$search%' ";
-
-          $search_query = mysqli_query($connection, $query);
-
-
-          if(!$search_query) {
-            die("Quey Failed" . mysqli_error($connection));
-          }
-
-
-          $count = mysqli_num_rows($search_query);
-
-          if($count == 0) {
-            echo "<h1> no hay resultado </h1>";
-          } else{
-            
-
-            $query = "SELECT * from posts";
-            $select_all_posts_query = mysqli_query($connection, $query);
-                        
-            while($row = mysqli_fetch_assoc(  $search_query)) {
-                  $post_title = $row['post_title'];
-                  $post_author = $row['post_author'];
-                  $post_date = $row['post_date'];
-                  $post_image = $row['post_image'];
-                  $post_content = $row['post_content'];
-                        
-
-                    ?>
-                      <h1 class="page-header">
-                        Page Heading
-                        <small>Secondary Text</small>
-                      </h1>
-                      <!-- First Blog Post -->
-                      <h2>
-                        <a href="#"><?= $post_title ?></a>
-                      </h2>
-                      <p class="lead">
-                        by <a href="index.php"><?= $post_author ?></a>
-                      </p>
-                      <p><span class="glyphicon glyphicon-time"></span><?= $post_date ?></p>
-                      <hr>
-                      <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                      <hr>
-                      <p><?= $post_content ?></p>
-                      <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-                      <hr>
-            <?php   } 
-                    } 
-              }
-              ?>
-      <!-- Pager -->
-      <!-- <ul class="pager">
-                    <li class="previous">
-                        <a href="#">&larr; Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer &rarr;</a>
-                    </li>
-                </ul> -->
-
-    </div>
-
-    <!-- Blog Sidebar Widgets Column -->
-    <?php include  "includes/sidebar.php"?>
-  </div>
-  <!-- /.row -->
-
-  <hr>
-  <?php include  "includes/footer.php" ?>
+                    <a class="btn btn-primary" href="post.php?p_id=<?= $ListAllSearchPosts['post_id'] ;?>">Leer Mas... </a>
+                </div>
+            </div>
+        </div>
+       <?php endforeach; ?> 
+</div>
+<hr>
+<?php include  "includes/sidebar.php"?>
+<?php include  "includes/footer.php" ?>

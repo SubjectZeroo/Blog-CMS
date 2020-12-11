@@ -1,3 +1,10 @@
+<?php require_once ("model/post/post.model.php"); ?>
+<?php 
+$Posts = new Post();
+$CategoryPost = $Posts->showCategories();
+$ListCategories = $CategoryPost->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <div class="column is-3">  
             <?php include "widget.php"  ?>
             <div class="section-search my-3">
@@ -40,27 +47,9 @@
         
         </div> -->
         <div class="well">
-            <?php   
-                $query = "SELECT * FROM categories";
-                $select_categories_sidebar = mysqli_query($connection, $query);
-            ?>
-                <h4 class="title is-3">Blog Categories</h4>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-
-
-                        <?php 
-                        while($row = mysqli_fetch_assoc( $select_categories_sidebar)) {
-                        $cat_title = $row['category_title'];
-                        $cat_id = $row['category_id'];
-
-                        echo "<div class='content'><li> <a href='category.php?category=$cat_id'>{$cat_title}</a></li></div>";
-                        }
-                        
-                        
-                        ?>
-                
+                <?php foreach ($ListCategories as $ListCategory): ?>
+                        <div class="content"><li> <a href="category.php?category=<?=$ListCategory['category_id']?>"><?= $ListCategory['category_title'] ?></a></li></div>
+                <?php endforeach; ?>
                         </ul>
                     </div>   
                 </div>                  

@@ -1,6 +1,6 @@
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
- 
+
 <?php
 if(isset($_POST['resgister'])){
 
@@ -8,30 +8,11 @@ if(isset($_POST['resgister'])){
     $email = $_POST['email'];
     $password =$_POST['password'];
 
-
     if(!empty($username) && !empty($email) && !empty($password)) {
-
         $username = mysqli_real_escape_string($connection, $username);
         $email =    mysqli_real_escape_string($connection, $email);
         $password = mysqli_real_escape_string($connection, $password);
-
         $password = password_hash( $password, PASSWORD_BCRYPT, array('cost' => 12));
-
-
-        // $query = "SELECT randSalt FROM users";
-        // $select_randsalt_query = mysqli_query($connection,$query);
-
-        // if(!$select_randsalt_query) {
-        //     die("Query Failed" . mysqli_error($connection));
-        // }
-
-        // $row = mysqli_fetch_array($select_randsalt_query);
-        // $salt = $row['randSalt'];
-
-        // $password = crypt($password, $salt);
-        
-
-
         $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
         $query .= "VALUES('{$username}','{$email}','{$password}','subcriber' )";
         $register_user_query = mysqli_query($connection, $query);
@@ -163,60 +144,47 @@ if(isset($_POST['resgister'])){
 
 
 ?>
- 
 
-    
-    <!-- Page Content -->
- <div class="column is-5 is-narrow"> 
+<div class="column is-5 is-narrow">
     <section id="login">
-                <div class="box">
-                   
-                        
-                            <div class="form-wrap">
-                                <h1 class="title">Registrarse</h1>
-                                <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
-                                
-                                    <h6 class="text-center"><?php echo $message; ?></h6>
-                                    <div class="field">
-                                        <label for="username" class="label">username</label>
-                                        <input class="input" type="text" name="username" id="username"  placeholder="Enter Desired Username"
+        <div class="box">
+            <div class="form-wrap">
+                <h1 class="title">Registrarse</h1>
+                <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
 
-                                        autocomplete="on"
+                    <h6 class="text-center"><?php echo $message; ?></h6>
+                    <div class="field">
+                        <label for="username" class="label">username</label>
+                        <input class="input" type="text" name="username" id="username"
+                            placeholder="Enter Desired Username" autocomplete="on"
+                            value="<?php echo isset($username) ? $username : '' ?>">
 
-                                        value="<?php echo isset($username) ? $username : '' ?>">
-
-                                        <p><?php echo isset($error['username']) ? $error['username'] : '' ?></p>
-
-                                
-                                    </div>
-                                    <div class="field">
-                                        <label class="label" for="email" >Email</label>
-                                        <input class="input" type="email" name="email" id="email"  placeholder="somebody@example.com" autocomplete="on" value="<?php echo isset($email) ? $email : '' ?>" >
-
-                                        <p><?php echo isset($error['email']) ? $error['email'] : '' ?></p>
-                        
-                                    </div>
-                                    <div class="field">
-                                        <label for="password" class="label">Password</label>
-                                        <input type="password" name="password" id="key" class="input" placeholder="Password">
-
-                                        <p><?php echo isset($error['password']) ? $error['password'] : '' ?></p>
+                        <p><?php echo isset($error['username']) ? $error['username'] : '' ?></p>
 
 
-                                    </div>
-                            
-                                    <input type="submit" name="resgister" id="btn-login" class="button is-success" value="Register">
-                                </form>
-                            
-                            </div>
-                       
-                   
-                </div> <!-- /.container -->
+                    </div>
+                    <div class="field">
+                        <label class="label" for="email">Email</label>
+                        <input class="input" type="email" name="email" id="email" placeholder="somebody@example.com"
+                            autocomplete="on" value="<?php echo isset($email) ? $email : '' ?>">
+
+                        <p><?php echo isset($error['email']) ? $error['email'] : '' ?></p>
+
+                    </div>
+                    <div class="field">
+                        <label for="password" class="label">Password</label>
+                        <input type="password" name="password" id="key" class="input" placeholder="Password">
+
+                        <p><?php echo isset($error['password']) ? $error['password'] : '' ?></p>
+
+
+                    </div>
+
+                    <input type="submit" name="resgister" id="btn-login" class="button is-success" value="Register">
+                </form>
+
+            </div>
+        </div>
     </section>
- </div>
-    
-
-
-
-
+</div>
 <?php include "includes/footer.php";?>
