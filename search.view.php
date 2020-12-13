@@ -1,4 +1,4 @@
-<?php include  "view//includes/header.php"?>
+<?php include  "view/includes/header.php"?>
 <?php 
 $Posts = new Post();
 $SearchPost  = $Posts->searchPost($_POST['search']);

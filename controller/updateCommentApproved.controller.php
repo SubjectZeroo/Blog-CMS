@@ -1,3 +1,4 @@
+<?php require_once  '../config/app.php'; ?>
 <?php
 require_once("../model/comments/comment.model.php");
 

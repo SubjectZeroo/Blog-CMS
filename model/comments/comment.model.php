@@ -7,7 +7,7 @@ include_once('../config/connection.php');
 Class Comment extends Connection {
    
   private $Comment_id;
-
+ private $Post_id;
   public function getComment_id()
         {
             return $this->Comment_id;
@@ -29,6 +29,16 @@ Class Comment extends Connection {
               echo $e;
       }
   }
+  public function showAllCommentsByPost($the_post_id){
+    try{
+            
+            $result = $this->sentence("SELECT * FROM post_comments PC INNER JOIN posts P ON P.post_id = PC.comment_post_id WHERE P.post_id = $the_post_id ");
+        
+            return $result;
+       } catch(Exception $e) {
+          echo $e;
+  }
+}
   public function updateCommentApproved(){
       try {
           $result = $this->sentence("SET CHARACTER SET utf8");

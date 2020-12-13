@@ -1,27 +1,55 @@
+<?php require_once ("../model/users/users.model.php"); ?>
 <?php 
- $session = session_id();
- $time = time();
- $time_out_in_seconds = 05;
- $time_out = $time - $time_out_in_seconds;
-
- $query = "SELECT * FROM users_online WHERE session = '$session'";
- $send_query = mysqli_query($connection, $query);
- $count = mysqli_num_rows($send_query);
-
-     if($count == NULL) {
-
-     mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session','$time')");
+$session = session_id();
+$time = time();
+$time_out_in_seconds = 05;
+$time_out = $time - $time_out_in_seconds;
 
 
-     } else {
+$Users = new User();
+$User = $Users->showUserSession($session);
+$CountUsersSession = $User->fetch(PDO::FETCH_ASSOC);
+var_dump($CountUsersSession);
 
-     mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+if($CountUsersSession == NULL) {
+  $CreateUserSession = $Users->createUserSession($session,$time);
+  } else {
+  $UpdateUserSession = $Users->updateUserSession($session,$time);
+}
+
+$UsersOnline = $Users->showUsersOnline($time_out);
+$CountUserSession = $UsersOnline->fetch(PDO::FETCH_ASSOC);
 
 
-     }
+foreach ($CountUserSession as $CountUsersSession );
+?>
 
- $users_online_query =  mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$time_out'");
- echo $count_user = mysqli_num_rows($users_online_query);
+
+<?php 
+//  $session = session_id();
+//  $time = time();
+//  $time_out_in_seconds = 05;
+//  $time_out = $time - $time_out_in_seconds;
+
+
+//  $query = "SELECT * FROM users_online WHERE session = '$session'";
+//  $send_query = mysqli_query($connection, $query);
+//  $count = mysqli_num_rows($send_query);
+
+//   if($count == NULL) {
+
+//      mysqli_query($connection, "INSERT INTO users_online(session, time) VALUES('$session','$time')");
+
+
+//      } else {
+
+//      mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+
+
+//      }
+
+//  $users_online_query =  mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$time_out'");
+//  echo $count_user = mysqli_num_rows($users_online_query);
 
 
 
@@ -47,7 +75,7 @@
   <div class="navbar-end">    
       <div class="navbar-item">
             Users Online:
-            <?php echo $count_user;?>
+            <?= $CountUsersSession  ;?>
       </div>
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link" >

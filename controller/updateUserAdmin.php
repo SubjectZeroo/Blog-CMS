@@ -1,28 +1,28 @@
 <?php require_once  '../config/app.php'; ?>
 <?php
-require_once("../model/comments/comment.model.php");
+require_once("../model/users/users.model.php");
 
-$comment = new Comment();
+$user = new User();
 
-if(isset($_GET['unapproved'])){
+if(isset($_GET['change_to_admin'])){
 
-  $comment->setComment_id($_GET['unapproved']);
+  $user->setUser_id($_GET['change_to_admin']);
   
 
-    $result = $comment->updateCommentUnapproved();
+    $result = $user->updateUserToAdmin();
 
     if ($result == "exito")
     {
         echo "<script type='text/javascript'>
           alert('The comment was unapproved');
-          window.location.href = '../admin/comments.php';
+          window.location.href = '../admin/users.php';
         </script>";
     }
     else
     {
         echo "<script type='text/javascript'>
           alert('An error has occurred, please try again');
-          window.location.href = '../admin/comments.php';
+          window.location.href = '../admin/users.php';
         </script>";
     }
 

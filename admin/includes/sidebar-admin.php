@@ -14,19 +14,19 @@
             <li>  <a href="posts.php?source=add_post">Add Post</a></li>
           </ul>
           <p class="menu-label">
-            Comentarios
+            Comments
           </p>
           <ul class="menu-list">
             <li>  <a href="comments.php"><i class="fa fa-fw fa-file"></i> Coments</a></li>
           </ul>
           <p class="menu-label">
-            Categorias
+            Categories
           </p>
           <ul class="menu-list">
             <li>  <a href="categories.php"><i class="fa fa-fw fa-wrench"></i> Categories</a></li>
           </ul>
           <p class="menu-label">
-            Usuarios
+            User
           </p>
           <ul class="menu-list">
             <li> <a href="users.php">View Users</a></li>

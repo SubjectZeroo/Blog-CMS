@@ -5,8 +5,6 @@ $Category = new Category();
 $ShowAllCategories  = $Category->showAllCategories();
 $ListAllCategories = $ShowAllCategories->fetchAll(PDO::FETCH_ASSOC);
 
-
-
 ?>
   <form action="/controller/createCategory.controller.php" method="post">
     <div class="column">
@@ -42,8 +40,6 @@ $ListAllCategories = $ShowAllCategories->fetchAll(PDO::FETCH_ASSOC);
                       
                     </div>
                   </form>
-
-
   <?php             
   }      
   ?>

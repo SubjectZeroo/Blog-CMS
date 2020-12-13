@@ -17,10 +17,6 @@ $User = $ListUsers->rowCount();
 $ListCategories  = $Posts->listCategories();
 $Category = $ListCategories->rowCount();
 
-
-
-
-
 $ListPostPublished  = $Posts->listPostsPublished();
 $PostPublished = $ListPostPublished->fetch(PDO::FETCH_ASSOC);
 
@@ -46,7 +42,6 @@ foreach ($UserSubscriber as $UsersSubscriber) {
 }
 
 ?>
-
     <header class="is-clearfix">
         <div>
             <h2>Welcome to the sistem  <small> <?php echo $_SESSION['username'] ?></small></h2>

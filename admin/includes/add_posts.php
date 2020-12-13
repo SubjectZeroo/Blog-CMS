@@ -1,4 +1,3 @@
-
 <?php require_once ("../model/post/post.model.php"); ?>
 <?php require_once ("../model/users/users.model.php"); ?>
 <?php 
@@ -20,11 +19,6 @@ $ListUsers = $User->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
     </div>
-    <!-- 
-    <div class="form-group">
-    <label for="">Post Category </label>
-        <input class="form-control" name="post_category_id" type="text">
-    </div> -->
     <div class="field">
     <label class="label" for="">Category</label>
         <div class="control">
@@ -39,12 +33,6 @@ $ListUsers = $User->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
     </div>
-    <!-- <div class="field">
-        <label class="label" for="">Post Author</label>
-        <div class="control">
-            <input class="input" name="post_author" type="text">
-        </div>
-    </div> -->
     <div class="field">
          <label class="label" for="">User</label>
         <div class="control">

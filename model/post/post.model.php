@@ -1,5 +1,5 @@
 <?php 
-include_once('../config/connection.php');
+include_once APP_PATH .('/config/connection.php');
 
 Class Post extends Connection {
         private $Post_id;
@@ -20,7 +20,7 @@ Class Post extends Connection {
       
         public function getPost_id()
         {
-            return $this->Post_status;
+            return $this->Post_id;
         }
 
 

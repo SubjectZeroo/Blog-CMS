@@ -46,7 +46,7 @@ $ListCategories = $CategoryPost->fetchAll(PDO::FETCH_ASSOC);
       <div class="navbar-item">
         <div class="buttons">
           <button class="button is-primary modal-button" data-target="modal" aria-haspopup="true" onclick="refs.modalLogin.open()"> <strong>Log In </strong> </button>
-          <a href="/registration.php" class="button is-primary">
+          <a href="/registration.view.php" class="button is-primary">
             <strong>Sign up</strong>
           </a>
         </div>     

@@ -1,5 +1,5 @@
 <?php  include "config/db.php"; ?>
-<?php  include "../includes/header.php"; ?>
+<?php  include "view/includes/header.php"; ?>
 
 <?php
 if(isset($_POST['resgister'])){
@@ -150,7 +150,7 @@ if(isset($_POST['resgister'])){
         <div class="box">
             <div class="form-wrap">
                 <h1 class="title">Registrarse</h1>
-                <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                <form role="form" action="/registration.view.php" method="post" id="login-form" autocomplete="off">
 
                     <h6 class="text-center"><?php echo $message; ?></h6>
                     <div class="field">
@@ -187,4 +187,4 @@ if(isset($_POST['resgister'])){
         </div>
     </section>
 </div>
-<?php include "includes/footer.php";?>
+<?php include "view/includes/footer-blog.view.php";?>
