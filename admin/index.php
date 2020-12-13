@@ -1,8 +1,55 @@
-<?php include "../admin/includes/header.php" ?>
-<main class="main">
+
+<?php include  "includes/header.php"?>
+
+<?php require_once ("../model/post/post.model.php"); ?>
+<?php 
+
+$Posts = new Post();
+$ListPost  = $Posts->listPosts();
+$Post = $ListPost->rowCount();
+
+$ListComments  = $Posts->listComments();
+$Comment = $ListComments->rowCount();
+
+$ListUsers  = $Posts->listUsers();
+$User = $ListUsers->rowCount();
+
+$ListCategories  = $Posts->listCategories();
+$Category = $ListCategories->rowCount();
+
+
+
+
+
+$ListPostPublished  = $Posts->listPostsPublished();
+$PostPublished = $ListPostPublished->fetch(PDO::FETCH_ASSOC);
+
+foreach ($PostPublished as $PostsPublished) {
+    echo $PostsPublished;
+    
+}
+$ListCommentUnaproved  = $Posts->listCommentUnaproved();
+$CommentUnaproved = $ListCommentUnaproved->fetch(PDO::FETCH_ASSOC);
+
+
+foreach ($CommentUnaproved as $CommentsUnaproved) {
+    echo $CommentsUnaproved;
+    
+}
+
+$ListUsersSubscriber  = $Posts->listUsersSubscriber();
+$UserSubscriber = $ListUsersSubscriber->fetch(PDO::FETCH_ASSOC);;
+
+foreach ($UserSubscriber as $UsersSubscriber) {
+    echo $UsersSubscriber;
+    
+}
+
+?>
+
     <header class="is-clearfix">
         <div>
-            <h2>Bienvenido Al Sistema  <small> <?php echo $_SESSION['username'] ?></small></h2>
+            <h2>Welcome to the sistem  <small> <?php echo $_SESSION['username'] ?></small></h2>
            
         </div>
 
@@ -16,13 +63,7 @@
                     </div>
                     <div class="media-content">
                         <div class="content ">
-                            <?php 
-                                                        $query = "SELECT * FROM posts";
-                                                        $select_all_post = mysqli_query($connection,$query);
-                                                        $post_counts = mysqli_num_rows($select_all_post);   
-                                                        echo   "<h1 class='title  has-text-white '>{$post_counts}</h1>"           
-                                                    ?>
-
+                                <h1 class='title  has-text-white '><?= $Post ?></h1>                                           
                             <h2 class="subtitle  has-text-white ">Posts</h2>
                         </div>
                         <nav class="level is-mobile">
@@ -34,7 +75,6 @@
                 </div>
                 <a class="level-item has-text-white " aria-label="reply" href="./posts.php">
                     <p class="mr-2">View Details</p>
-                    <!-- <span class=""><i class="fa fa-arrow-circle-right"></i></span>     -->
                 </a>
             </article>
         </div>
@@ -46,24 +86,14 @@
                         <i class="fa fa-file-text fa-5x"></i>
                     </div>
                     <div class="media-content">
-                        <div class="content ">
-                            <?php 
-                                                    $query = "SELECT * FROM post_comments";
-                                                    $select_all_comments = mysqli_query($connection,$query);
-                                                    $comments_counts = mysqli_num_rows( $select_all_comments);   
-
-                                                    echo   "<h1 class='title   has-text-white'>{$comments_counts}</h1>"
-                                        
-                                        
-                                            ?>
-
+                        <div class="content ">     
+                            <h1 class='title has-text-white'><?= $Comment ?></h1>                          
                             <h2 class="subtitle  has-text-white ">Comments</h2>
                         </div>
                         <nav class="level is-mobile">
                             <div class="level-left">
                                 <a class="level-item has-text-white " aria-label="reply" href="./posts.php">
                                     <span class="mr-2">View Details</span>
-                                    <!-- <span class=""><i class="fa fa-arrow-circle-right"></i></span>     -->
                                 </a>
                             </div>
                         </nav>
@@ -72,8 +102,6 @@
             </div>
         </div>
         <div class="tile is-parent">
-
-
             <div class="tile is-child box  has-background-success">
                 <div class="media has-text-white ">
                     <div class="media-left">
@@ -81,17 +109,7 @@
                     </div>
                     <div class="media-content">
                         <div class="content ">
-
-                            <?php 
-                                     $query = "SELECT * FROM users";
-                                     $select_all_users = mysqli_query($connection,$query);
-                                     $users_counts = mysqli_num_rows( $select_all_users);   
-
-                                      echo   "<div class='title  has-text-white'>{$users_counts}</div>"
-                                        
-                                        
-                                        ?>
-
+                            <div class='title  has-text-white'><?= $User ?></div>
                             <h2 class="subtitle  has-text-white ">Users</h2>
                         </div>
                         <nav class="level is-mobile">
@@ -114,16 +132,7 @@
                     </div>
                     <div class="media-content">
                         <div class="content ">
-                            <?php 
-                                     $query = "SELECT * FROM categories";
-                                     $select_all_categories = mysqli_query($connection,$query);
-                                     $categories_counts = mysqli_num_rows( $select_all_categories);   
-
-                                      echo   "<div class='title   has-text-white'>{$categories_counts}</div>"
-                                        
-                                        
-                                        ?>
-
+                            <div class='title   has-text-white'><?= $Category ?></div>
                             <h2 class="subtitle  has-text-white ">Categories</h2>
                         </div>
                         <nav class="level is-mobile">
@@ -140,24 +149,7 @@
         </div>
     </div>
     
-    <?php 
-                    
-                    $query = "SELECT * FROM posts WHERE  post_status = 'published'";
-                    $select_all_published_posts = mysqli_query($connection,$query);
-                    $published_counts = mysqli_num_rows($select_all_published_posts);   
-                    
-
-                    $query = "SELECT * FROM post_comments WHERE  comment_status = 'unapproved'";
-                    $select_all_unapproved_comments = mysqli_query($connection,$query);
-                    $unapproved_comments_count = mysqli_num_rows($select_all_unapproved_comments); 
-                    
-                    
-
-                    
-                    $query = "SELECT * FROM users WHERE  user_role = 'subscribers'";
-                    $select_all_subscribers = mysqli_query($connection,$query);
-                    $subscriber_count = mysqli_num_rows(  $select_all_subscribers);   
-                ?>
+   
     
                 <script type="text/javascript">
                     google.charts.load('current', {'packages':['bar']});
@@ -168,11 +160,11 @@
                         ['Date', 'Count'],
 
                         <?php 
-                        $element_text = ['Active Posts','Draft Posts', 'Categories', 'Users','Comments', 'Pending Comments' ];
+                        $element_text = ['Post Published','Comments','Users Subscriber'];
                         
-                        $element_count = [$post_counts,$published_counts, $categories_counts,  $users_counts, $comments_counts,  $unapproved_comments_count];
+                        $element_count = [$PostsPublished, $CommentsUnaproved, $UsersSubscriber];
                         
-                        for($i = 0; $i < 5; $i++) {
+                        for($i = 0; $i < 3; $i++) {
 
                             echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
 
@@ -199,5 +191,5 @@
                 </script>
                 <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>                        
                 </div> 
-</main>
+
 <?php include "includes/footer.php" ?>

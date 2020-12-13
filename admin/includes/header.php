@@ -1,4 +1,4 @@
-<?php include_once "../includes/db.php"; ?>
+<?php include "../config/db.php" ?>
 <?php include_once "functions.php"; ?>
 <?php ob_start(); ?>
 <?php session_start(); ?>
@@ -45,3 +45,4 @@ if(!isset($_SESSION['user_role'])){
     <div class="wrapper">
         <div class="">
             <?php include  "../admin/includes/sidebar-admin.php"?>
+            <main id="wrapper" class="main">

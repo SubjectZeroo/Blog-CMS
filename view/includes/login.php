@@ -1,4 +1,4 @@
-<?php include "db.php"; ?>
+<?php include "../../config/db.php" ?>
 
 <?php session_start(); ?> 
 <?php 
@@ -35,11 +35,11 @@ $select_user_query = mysqli_query($connection, $query);
     $_SESSION['user_firtsname'] =  $db_firstname;
     $_SESSION['user_lastname'] =  $db_lastname;
     $_SESSION['user_role'] =  $db_role;
-    header("Location: ../admin");
+    header("Location: ../../admin");
   
 
   } else {
-     header("Location: ../index.php");
+     header("Location: ../../index.php");
   }
 
 }

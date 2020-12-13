@@ -1,65 +1,17 @@
+
+<?php require_once ("../model/post/post.model.php"); ?>
+<?php require_once ("../model/users/users.model.php"); ?>
 <?php 
-if(isset($_POST['create_post'])) {
-  $post_title = $_POST['post_title'];
-  $post_user = $_POST['post_user'];
-  
-  $post_category_id = $_POST['post_category'];
-  $post_status = $_POST['post_status'];
-  $post_image = $_FILES['image']['name'];
-  $post_image_temp = $_FILES['image']['name'];
-  $post_tags =  $_POST['post_tags'];
-  // $post_comment_count = 4;
-  $post_date = date('d-m-y');
-  $post_content = $_POST['post_content'];
+$Posts = new Post();
+$CategoryPost = $Posts->showCategories();
+$ListCategories = $CategoryPost->fetchAll(PDO::FETCH_ASSOC);
 
-  move_uploaded_file($post_image_temp, "../images/$post_image");
-
-
-
-  $query = "INSERT INTO posts(post_category_id, 
-                              post_title, 
-                              post_user, 
-                              post_date, 
-                              post_image, 
-                              post_content, 
-                              post_tags, 
-                             
-                              post_status)";
-
-
-
-$query .= "VALUES ({$post_category_id},
-                   '{$post_title}',
-                   '{$post_user}',
-                    now(),
-                   '{$post_image}',
-                   '{$post_content}',
-                   '{$post_tags}',
-                  
-                   '{$post_status}')";
-
-    $create_post_query = mysqli_query($connection, $query);
-
-
-    if(!$create_post_query) {
-      die("QUERY FAILED" . mysqli_error($connection));
-    }
-
-    $the_post_id = mysqli_insert_id($connection);
-
-    echo "<p class='bg-success'> Post Updated. <a href='../post.php?p_id={$the_post_id}'> View Post</a> <a href='../post.php'> Edit More Post</a> </p>";
-}
-
-
-
-
+$Users = new User();
+$User = $Users->showCategories();
+$ListUsers = $User->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-
-
-
-
-<form action="" method="post" enctype="multipart/form-data">
+<h1 class="title">Create Post</h1>
+<form action="/controller/createPost.controller.php?>" method="post" enctype="multipart/form-data">
 
     <div class="field">
         <label class="label" for="">Post Title</label>
@@ -69,38 +21,24 @@ $query .= "VALUES ({$post_category_id},
 
     </div>
     <!-- 
-
-<div class="form-group">
-  <label for="">Post Category </label>
-    <input class="form-control" name="post_category_id" type="text">
-</div> -->
-
+    <div class="form-group">
+    <label for="">Post Category </label>
+        <input class="form-control" name="post_category_id" type="text">
+    </div> -->
     <div class="field">
+    <label class="label" for="">Category</label>
         <div class="control">
             <div class="select">
                 <select name="post_category" id="post_category">
                      <option value='0'>Seleccione</option>
-                    <?php 
-        
-        $query = "SELECT * FROM categories ";
-        $select_categories = mysqli_query($connection, $query);
-
-                        while($row = mysqli_fetch_assoc($select_categories)) {
-                              $cat_id = $row['category_id'];
-                              $cat_title = $row['category_title'];
-
-                                echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                        }
-        
-        ?>
-                    
+                     <?php foreach ($ListCategories as $ListCategory): ?>
+                      <option value='<?= $ListCategory['category_id'] ?>'><?= $ListCategory['category_title'] ?></option>"
+                     <?php endforeach; ?> 
                 </select>
             </div>
         </div>
 
     </div>
-
-
     <!-- <div class="field">
         <label class="label" for="">Post Author</label>
         <div class="control">
@@ -108,31 +46,20 @@ $query .= "VALUES ({$post_category_id},
         </div>
     </div> -->
     <div class="field">
+         <label class="label" for="">User</label>
         <div class="control">
             <div class="select">
                 <select name="post_user" id="post_user">
                     <option value='0'>Seleccione</option>
-                    <?php 
-        
-                             $query = "SELECT * FROM users ";
-                            $select_users = mysqli_query($connection, $query);
-
-                        while($row = mysqli_fetch_assoc($select_users)) {
-                              $user_id = $row['id'];
-                              $username = $row['username'];
-
-                                echo "<option value='{$user_id}'>{$username}</option>";
-                        }
-        
-        ?>
+                    <?php foreach ($ListUsers as $ListUser): ?>
+                      <option value='<?= $ListUser['id'] ?>'><?= $ListUser['username'] ?></option>"
+                     <?php endforeach; ?> 
                  
                 </select>
             </div>
         </div>
 
     </div>
-
-
     <div class="field">
         <label class="label" for="">Post Status</label>
         <div class="select">
@@ -145,8 +72,6 @@ $query .= "VALUES ({$post_category_id},
             </div>
         </div>
     </div>
-
-
     <div class="file">
         <label class="file-label">
             <input class="file-input" type="file" name="image">
@@ -160,8 +85,6 @@ $query .= "VALUES ({$post_category_id},
             </span>
         </label>
     </div>
-
-
     <div class="field">
         <label class="label" for="post_tags">Post Tags</label>
         <div class="control">

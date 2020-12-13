@@ -9,7 +9,7 @@ $ListCategories = $CategoryPost->fetchAll(PDO::FETCH_ASSOC);
             <?php include "widget.php"  ?>
             <div class="section-search my-3">
                 <h4 class="title">Blog Search</h4>
-                <form action="search.php" method="POST">
+                <form action="/search.view.php" method="POST">
                     <div class="control">
                         <div class="field has-addons">
                             <div class="control">
@@ -48,7 +48,7 @@ $ListCategories = $CategoryPost->fetchAll(PDO::FETCH_ASSOC);
         </div> -->
         <div class="well">
                 <?php foreach ($ListCategories as $ListCategory): ?>
-                        <div class="content"><li> <a href="category.php?category=<?=$ListCategory['category_id']?>"><?= $ListCategory['category_title'] ?></a></li></div>
+                        <div class="content"><li> <a href="category.view.php?category=<?=$ListCategory['category_id']?>"><?= $ListCategory['category_title'] ?></a></li></div>
                 <?php endforeach; ?>
                         </ul>
                     </div>   

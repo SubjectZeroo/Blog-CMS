@@ -1,3 +1,4 @@
+<?php require_once  'config/app.php'; ?>
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@
 
 </head>
 <body>
-    <?php include  "includes/navigation.php"?>
+    <?php include APP_PATH ."/view/includes/navigation.php";?>
     <section class="section">
         <div class="container">
             <div class="columns is-mobile is-centered">

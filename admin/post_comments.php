@@ -1,5 +1,5 @@
 <?php include "includes/header.php" ?> 
-<main class="main">
+
 <table class="table">
   <thead>
     <tr>
@@ -81,9 +81,6 @@
 
 
 <?php 
-
-
-
                   if(isset($_GET['approved'])) {
                     $the_comment_id = $_GET['approved'];
                   $query = "UPDATE post_comments SET comment_status = 'approved' WHERE id =  $the_comment_id";
@@ -110,7 +107,4 @@
                         header("Location: post_comments.php?id=". $_GET['id'] ."");
                         }                       
                        ?>
-
-
-</main>
 <?php include "includes/footer.php" ?>

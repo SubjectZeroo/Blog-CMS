@@ -1,5 +1,5 @@
 
-<?php include  "includes/header.php"?>
+<?php include  "view/includes/header.php"?>
 <?php require_once ("model/post/post.model.php"); 
  $limit = 6;
 $Posts = new Post();
@@ -19,7 +19,7 @@ $pages = ceil($total / $limit);
     <div class="modal-content">
         <div class="section-login box">
             <h4 class="title">Login</h4>
-            <form action="includes/login.php" method="POST">
+            <form action="/view/includes/login.php" method="POST">
                 <div class="field">
                     <label class="label">Username</label>
                     <p class="control has-icons-left has-icons-right">
@@ -90,7 +90,7 @@ $pages = ceil($total / $limit);
             </div>
             <div class="content">
                 <h1 class="title">
-                    <a href="post.php?p_id=<?= $Post['post_id'] ;?>"><?= $Post['post_title'] ?></a>
+                    <a href="post.view.php?p_id=<?= $Post['post_id'] ;?>"><?= $Post['post_title'] ?></a>
                 </h1>
                 <?= $Post['post_content'] ?>
 
@@ -111,5 +111,5 @@ $pages = ceil($total / $limit);
     </nav>
 </div>
 <hr>
-<?php include  "includes/sidebar.php"?>
-<?php include  "includes/footer.php"?>
+<?php include "view/includes/sidebar.php"?>
+<?php include "view/includes/footer-blog.view.php"?>

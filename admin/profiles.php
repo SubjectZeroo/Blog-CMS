@@ -2,9 +2,9 @@
 <?php
 
 if(isset($_SESSION['username'])){
- $username =  $_SESSION['username'];
-$query = "SELECT * FROM users WHERE username = '{$username}'";
-$select_user_profile_query = mysqli_query($connection, $query);
+  $username =  $_SESSION['username'];
+  $query = "SELECT * FROM users WHERE username = '{$username}'";
+  $select_user_profile_query = mysqli_query($connection, $query);
 
 
   while($row = mysqli_fetch_array($select_user_profile_query)) {
@@ -60,11 +60,6 @@ if(isset($_POST['edit_user'])) {
 
 
 ?>
-
-
-
-<main class="main" id="wrapper">
-   
           <form action="" method="post" enctype="multipart/form-data">
 
             <div class="field">
@@ -131,7 +126,5 @@ if(isset($_POST['edit_user'])) {
             </div>
 
           </form>
-
-  </div>
   <!-- /#page-wrapper -->
   <?php include "includes/footer.php" ?>

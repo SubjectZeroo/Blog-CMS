@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table is-bordered is-striped is-fullwidth">
   <thead>
     <tr>
       <th>Id</th>

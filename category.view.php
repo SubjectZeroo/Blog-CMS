@@ -1,4 +1,4 @@
-<?php include  "includes/header.php"?>
+<?php include "view/includes/header.php"?>
 <?php require_once ("model/post/post.model.php"); ?>
 
 <?php 
@@ -51,5 +51,5 @@ $ListCategoryPost = $CategoryPost->fetchAll(PDO::FETCH_ASSOC);
 
 <hr>
 
-<?php include  "includes/sidebar.php"?>
-<?php include  "includes/footer.php"?>
+<?php include  "view/includes/sidebar.php"?>
+<?php include  "view/includes/footer-blog.view.php"?>

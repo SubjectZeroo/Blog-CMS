@@ -1,12 +1,6 @@
 <?php include "includes/header.php" ?>
-
-<main class="main" id="wrapper">
-
-
-
-
-  <?php             
-                       if(isset($_GET['source'])) {
+<?php             
+        if(isset($_GET['source'])) {
                          $source = $_GET['source'];
                        } else {
                          $source = " ";
@@ -30,8 +24,4 @@
                         break;
                        }
                 ?>
-
-
-
-</main>
 <?php include "includes/footer.php" ?>

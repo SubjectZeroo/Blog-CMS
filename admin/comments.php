@@ -1,6 +1,4 @@
 <?php include "includes/header.php" ?>
-
-<main class="main" id="wrapper">
   <?php      
                 if(isset($_GET['source'])) {
                          $source = $_GET['source'];
@@ -25,6 +23,5 @@
                           include "includes/viem_all_comments.php";
                         break;
                        }
-                       ?>
-</main>
+    ?>
 <?php include "includes/footer.php" ?>

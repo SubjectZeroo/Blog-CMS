@@ -1,5 +1,4 @@
-<?php include "includes/db.php" ?>
-<?php include  "includes/header.php"?>
+<?php include  "view//includes/header.php"?>
 <?php 
 $Posts = new Post();
 $SearchPost  = $Posts->searchPost($_POST['search']);
@@ -33,12 +32,12 @@ $ListAllSearchPost = $SearchPost->fetchAll(PDO::FETCH_ASSOC);
                     </h1>
                     <?= $ListAllSearchPosts['post_content'] ?>
 
-                    <a class="btn btn-primary" href="post.php?p_id=<?= $ListAllSearchPosts['post_id'] ;?>">Leer Mas... </a>
+                    <a class="btn btn-primary" href="post.view.php?p_id=<?= $ListAllSearchPosts['post_id'] ;?>">Leer Mas... </a>
                 </div>
             </div>
         </div>
        <?php endforeach; ?> 
 </div>
 <hr>
-<?php include  "includes/sidebar.php"?>
-<?php include  "includes/footer.php" ?>
+<?php include  "view/includes/sidebar.php"?>
+<?php include  "view/includes/footer-blog.view.php" ?>
