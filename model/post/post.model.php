@@ -319,7 +319,7 @@ Class Post extends Connection {
                 public function searchPost($search) {
                     try {
                 
-                        $result = $this->sentence("SELECT * FROM posts WHERE post_tags  LIKE  '%$search%' ");
+                        $result = $this->sentence("SELECT * FROM posts WHERE post_tags   LIKE '%$search%'  OR  post_title LIKE '%$search%' ");
 
                         if ($result->rowCount() > 0){                     
                             return $result;

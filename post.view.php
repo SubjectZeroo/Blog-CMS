@@ -13,7 +13,7 @@ $ListComments = $CommentPost->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-<div class="column is-9">
+<main class="tile is-vertical is-8 p-6">
     <?php foreach ($ListCategoryById as $ListPost): ?>
     <div class="card">
         <div class="card-image">
@@ -41,20 +41,45 @@ $ListComments = $CommentPost->fetchAll(PDO::FETCH_ASSOC);
                 <time datetime="2016-1-1"><?=$ListPost['post_date']?></time>
             </div>
         </div>
-        <?php foreach ($ListComments as $ListComment): ?>
-            <div class="media">
-                <a href="" class="pull-left">
-                    <img src="" alt="" class="media-object">
-                </a>
-                <div class="media-body">
-                    <h4 class="media-heading"><?= $ListComment['comment_author'] ?>
-                        <small><?= $ListComment['comment_date']  ?></small>
-                    </h4>
-                    <?= $ListComment['comment_content']  ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
-        
+         
+        <div class="p-3">
+            <?php foreach ($ListComments as $ListComment): ?>    
+                <article class="media">
+                    <figure class="media-left">
+                        <p class="image is-64x64">
+                        <img src="https://bulma.io/images/placeholders/128x128.png">
+                        </p>
+                    </figure>
+                    <div class="media-content">
+                        <div class="content">
+                        <p>
+                            <strong><?= $ListComment['comment_author'] ?></strong> 
+                            <!-- <small>@johnsmith</small>  -->
+                            <small><?= $ListComment['comment_date']  ?></small>
+                            <br>
+                            <?= $ListComment['comment_content']  ?>
+                        </p>
+                        </div>
+                        <!-- <nav class="level is-mobile">
+                        <div class="level-left">
+                            <a class="level-item">
+                            <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                            </a>
+                            <a class="level-item">
+                            <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                            </a>
+                            <a class="level-item">
+                            <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                            </a>
+                        </div>
+                        </nav> -->
+                    <!-- </div>
+                    <div class="media-right">
+                        <button class="delete"></button>
+                    </div> -->
+                </article>
+            <?php endforeach; ?> 
+        </div>         
         <!-- Comments Form -->
         <div class="section-comment box">
             <h4 class="title">Deja un Comentario:</h4>
@@ -85,7 +110,7 @@ $ListComments = $CommentPost->fetchAll(PDO::FETCH_ASSOC);
     </div>
  <?php endforeach; ?>
    
-</div>
+</main>
 <hr>
 <?php include  "view/includes/sidebar.php"?>
-<?php include  "view/includes/footer.php"?>
+<?php include  "view/includes/footer-blog.view.php"?>

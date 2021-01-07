@@ -59,8 +59,7 @@ $pages = ceil($total / $limit);
     <button class="modal-close is-large" aria-label="close" onclick="refs.modalLogin.close()"></button>
 </div>
 
-<!-- Page Content -->
-<div class="column is-9">
+<main class="tile is-vertical is-8 p-6">
 
     <?php foreach ($Lista as $Post): ?>
         <?php 
@@ -109,7 +108,6 @@ $pages = ceil($total / $limit);
             
         </ul>
     </nav>
-</div>
-<hr>
+</main>
 <?php include "view/includes/sidebar.php"?>
 <?php include "view/includes/footer-blog.view.php"?>
