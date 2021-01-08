@@ -1,5 +1,5 @@
 <?php 
-include_once APP_PATH .('/config/connection.php');
+include APP_PATH .('/config/connection.php');
 
 Class Post extends Connection {
         private $Post_id;
@@ -582,6 +582,22 @@ Class Post extends Connection {
                 }
               
             } catch (Exception $e) {
+                echo $e;
+            }
+        }
+
+
+        public function getPostWithComments()
+        { 
+            try
+            {
+
+                $result = $this->sentence("SELECT P.post_title , P.post_date,COUNT(PC.comment_post_id) FROM posts P INNER JOIN post_comments PC ON P.post_id = PC.comment_post_id  GROUP BY P.post_id HAVING COUNT(*) >= 1 LIMIT 5");
+
+                return $result;
+            }
+            catch(Exception $e)
+            {
                 echo $e;
             }
         }
