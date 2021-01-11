@@ -602,6 +602,29 @@ Class Post extends Connection {
             }
         }
 
+        
+        public function updatePostStatus($bulk_options, $postValueId){
+
+            try {
+                $result = $this->sentence("SET CHARACTER SET utf8");
+                $result = $this->sentence("UPDATE posts SET 
+              
+                post_status  =  '$bulk_options'
+                
+                WHERE post_id = '$postValueId'");
+                if ($result->rowCount() > 0)
+                {
+                    return "exito";
+                }
+                else
+                {
+                    return "fallo";
+                }
+            } catch (Exception $e) {
+                echo $e;
+            }
+        }
+
 }
 
 

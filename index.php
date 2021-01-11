@@ -19,7 +19,7 @@ $pages = ceil($total / $limit);
     <div class="modal-content">
         <div class="section-login box">
             <h4 class="title">Login</h4>
-            <form action="/view/includes/login.php" method="POST">
+            <form action="/controller/login.php" method="POST">
                 <div class="field">
                     <label class="label">Username</label>
                     <p class="control has-icons-left has-icons-right">

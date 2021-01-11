@@ -4,36 +4,10 @@ $Posts = new Post();
 $ShowAllPost  = $Posts->showAllPost();
 $ListAllPost = $ShowAllPost->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<?php
-if(isset($_POST['checkBoxArray'])){
- 
-  foreach($_POST['checkBoxArray'] as $postValueId){
-     $bulk_options = $_POST['bulk_options'];
 
-    switch( $bulk_options){
-      case 'published':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
-
-        $update_to_published_status = mysqli_query($connection, $query);
-      break;
-      case 'draft':
-        $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
-  
-        $update_to_draft_status = mysqli_query($connection, $query);
-      break;
-      case 'delete':
-        $query = "DELETE FROM posts  WHERE post_id = {$postValueId}";
-  
-        $update_to_delete_status = mysqli_query($connection, $query);
-      break;
-    }
-  }
-}
-
-?>
 <div class="column is-12">
   <h1 class="title">Post Table</h1>
-  <form action="" method="post">
+  <form action="/controller/updatePostStatus.php" method="post">
     <table class="table is-bordered is-striped is-fullwidth ">
       <div class="columns">
         <div id="bulkOptionsContainer" class="column is-2">

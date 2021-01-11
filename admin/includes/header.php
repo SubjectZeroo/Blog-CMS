@@ -1,6 +1,3 @@
-<?php require_once  '../config/app.php'; ?>
-<?php include "../config/db.php" ?>
-<?php include_once "functions.php"; ?>
 <?php ob_start(); ?>
 <?php session_start(); ?>
 <?php

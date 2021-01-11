@@ -1,6 +1,6 @@
-<?php require_once  '../config/app.php'; ?>
+
 <?php
-require_once("../model/users/users.model.php");
+require_once ("../model/users/users.model.php");
 
 $user = new User();
 

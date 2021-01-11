@@ -1,7 +1,6 @@
-<?php require_once  'app.php'; ?>
-
 <?php 
 Class Connection {
+  
   protected $hostname = "localhost";
   protected $dbusername = "root";
   protected $dbpassword = "";

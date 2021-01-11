@@ -44,8 +44,7 @@ foreach ($UserSubscriber as $UsersSubscriber) {
 ?>
     <header class="is-clearfix">
         <div>
-            <h2>Welcome to the sistem  <small> <?php echo $_SESSION['username'] ?></small></h2>
-           
+            <h2>Welcome to the sistem  <small> <?php echo $_SESSION['username'] ?></small></h2>     
         </div>
 
     </header>
@@ -143,10 +142,7 @@ foreach ($UserSubscriber as $UsersSubscriber) {
             </div>
         </div>
     </div>
-    
-   
-    
-                <script type="text/javascript">
+    <script type="text/javascript">
                     google.charts.load('current', {'packages':['bar']});
                     google.charts.setOnLoadCallback(drawChart);
 

@@ -6,13 +6,13 @@ include_once('../config/connection.php');
 
 Class User extends Connection {
   
-  private $User_id;
-  private $username;
-  private $user_firtsname;
-  private $user_lastname;
-  private $user_email;
-  private $user_role;
-  private $user_password;
+private $User_id;
+private $username;
+private $user_firtsname;
+private $user_lastname;
+private $user_email;
+private $user_role;
+private $user_password;
 private $session;
 private $time;
 
@@ -116,7 +116,6 @@ private $time;
       }
   }
 
-  
 
   public function showUserByUsername($username){
     try{
@@ -190,8 +189,8 @@ public function createUser()
 {
     try {
         $result = $this->sentence("SET CHARACTER SET utf8");
-        $result = $this->sentence("INSERT INTO users( user_firtsname, 
-                                                      user_lastname,
+        $result = $this->sentence("INSERT INTO users(user_firtsname, 
+                                                     user_lastname,
                                                       user_email, 
                                                       username, 
                                                       user_password,
@@ -215,6 +214,7 @@ public function createUser()
         echo $e;
     }
 }
+
 public function updateUser()
 {
     try {
@@ -242,65 +242,98 @@ public function updateUser()
 
 
 
-public function showUserSession($session){
-    try{
+    public function showUserSession($session){
+        try{
+                
+                $result = $this->sentence("SELECT * FROM users_online WHERE session = '$session'");
             
-            $result = $this->sentence("SELECT * FROM users_online WHERE session = '$session'");
-        
-            return $result;
-       } catch(Exception $e) {
-          echo $e;
-  }
-}
+                return $result;
+        } catch(Exception $e) {
+            echo $e;
+    }
+    }
 
-public function createUserSession($session,$time){
-    try{
+    public function createUserSession($session,$time){
+        try{
+                
+                $result = $this->sentence("INSERT INTO users_online(session, time) VALUES('$session','$time')");
             
-            $result = $this->sentence("INSERT INTO users_online(session, time) VALUES('$session','$time')");
-        
+                if ($result->rowCount() > 0)
+                    {
+                        return "exito";
+                    }
+                    else
+                    {
+                        return "fallo";
+                    }
+        } catch(Exception $e) {
+            echo $e;
+    }
+    }
+
+    public function updateUserSession($session,$time){
+        try{
+                
+                $result = $this->sentence("UPDATE users_online SET time = '$time' WHERE session = '$session'");
+            
+                if ($result->rowCount() > 0)
+                    {
+                        return "exito";
+                    }
+                    else
+                    {
+                        return "fallo";
+                    }
+        } catch(Exception $e) {
+            echo $e;
+    }
+    }
+
+
+
+    public function showUsersOnline($time_out){
+        try{
+                
+                $result = $this->sentence("SELECT COUNT(id) FROM users_online WHERE time > '$time_out'");
+            
+                return $result;
+        } catch(Exception $e) {
+            echo $e;
+    }
+    }
+
+
+    public function registerUser(){
+
+        try {
+            $result = $this->sentence("SET CHARACTER SET utf8");
+            $result = $this->sentence("INSERT INTO users( username, 
+                                                          user_email, 
+                                                          user_password,
+                                                          user_role)
+                                    VALUES( '$this->username',
+                                            '$this->user_email',
+                                            '$this->user_password',
+                                            'subscriber')");
             if ($result->rowCount() > 0)
-                {
-                    return "exito";
-                }
-                else
-                {
-                    return "fallo";
-                }
-       } catch(Exception $e) {
-          echo $e;
-  }
-}
+            {
+                return "exito";
+            }
+            else
+            {
+                return "fallo";
+            }
+        } catch (Exception $e) {
+            echo $e;
+        }
 
-public function updateUserSession($session,$time){
-    try{
-            
-            $result = $this->sentence("UPDATE users_online SET time = '$time' WHERE session = '$session'");
+    }
+
+
+    public function login()
+    {
         
-            if ($result->rowCount() > 0)
-                {
-                    return "exito";
-                }
-                else
-                {
-                    return "fallo";
-                }
-       } catch(Exception $e) {
-          echo $e;
-  }
-}
-
-
-
-public function showUsersOnline($time_out){
-    try{
-            
-            $result = $this->sentence("SELECT COUNT(id) FROM users_online WHERE time > '$time_out'");
-        
-            return $result;
-       } catch(Exception $e) {
-          echo $e;
-  }
-}
+    }
 
 }
 ?>
