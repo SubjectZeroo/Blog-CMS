@@ -1,0 +1,39 @@
+/*!
+ * Start Bootstrap - Blog Post HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+ :root{
+  --border-color-light: #E1E2E3;
+}
+
+
+body {
+  /* background: #eef0f1; */
+}
+
+.sidebar {
+  border-left: 1px solid var(--border-color-light);
+  padding-left: 1.9428571429rem;
+}
+
+.infobar{
+  align-items: center;
+border-bottom: 1px solid var(--border-color-light);
+color: var(--gray-1);
+display: flex;
+font-size: .7241964329rem;
+justify-content: space-between;
+padding: .6071428571rem 0;
+}
+
+
+.infobar__search [type="search"] {
+  background-color: var(--lighter);
+  border: none;
+  border-radius: 20px;
+  font-size: .7724761953rem;
+  padding: .3642857143rem 2.4285714286rem .3642857143rem 1.2142857143rem;
+  position: relative;
+  min-width: 15rem;
+}
