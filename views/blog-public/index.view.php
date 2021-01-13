@@ -44,5 +44,5 @@
         </ul>
     </nav>
 </main>
-<?php require("partials/sidebar.php");?>
+<?php require('partials/sidebar.php');?>
 <?php require('partials/footer.php'); ?>

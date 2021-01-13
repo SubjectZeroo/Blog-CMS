@@ -10,4 +10,4 @@ $count =$countPosts;
 $total = $count[0]['id'];
 $pages = ceil($total / $limit);
 
-require 'views/index.view.php';
+require 'views/blog-public/index.view.php';

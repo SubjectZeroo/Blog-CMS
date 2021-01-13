@@ -1,3 +1,3 @@
 <?php
 
-require 'views/sign.view.php';
+require 'views/blog-public/sign.view.php';

@@ -144,6 +144,19 @@
                 echo $e;
       }
     }
+
+    public function getUserByUsername($username)
+    {
+        try
+            {
+                $statement = $this->pdo->prepare("SELECT * FROM users WHERE username = '$username'");
+                $statement->execute();
+                return $statement->fetchAll(PDO::FETCH_CLASS);
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    } 
         
             
 

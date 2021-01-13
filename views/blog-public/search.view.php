@@ -1,5 +1,5 @@
-<?php require('partials/head.php'); ?>
-<?php require('partials/popup-login.php') ?>
+<?php require('../partials/head.php'); ?>
+<?php require('../partials/popup-login.php') ?>
 <div class="column is-9">
       <?php foreach ($searchPosts as $searchPost): ?>
         <div class="card">
@@ -35,4 +35,4 @@
        <?php endforeach; ?> 
 </div>
 <hr>
-<?php require('partials/footer.php'); ?>
+<?php require('../partials/footer.php'); ?>
