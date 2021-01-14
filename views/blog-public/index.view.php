@@ -1,5 +1,5 @@
 <?php require('partials/head.php'); ?>
-<?php require('partials/popup-login.php') ?>
+
 <main class="tile is-vertical is-8 p-6">
     <?php foreach ($posts as $post): ?>
         <div class="card mt-3">

@@ -158,6 +158,17 @@
       }
     } 
         
-            
+    public function count($row,$table)
+    {
+        try
+            {
+                $statement = $this->pdo->prepare("SELECT COUNT({$row}) FROM {$table}");
+                $statement->execute();
+                return $statement->fetchColumn();
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    }           
 
   }
