@@ -1,11 +1,3 @@
-<!-- <nav>
-    <ul>
-      <li> <a href="/about">about</a></li>
-      <li> <a href="/about/culture">about/culture</a></li>
-      <li> <a href="/contact">contact</a></li>  
-    </ul>
-</nav> -->
-
 <nav class="navbar is-info " role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/admin">
@@ -31,12 +23,12 @@
           ?>                     
     <div class="navbar-end">    
       <div class="navbar-item">
-        <div class="buttons">
+        <!-- <div class="buttons">
           <button class="button is-success modal-button" data-target="modal" aria-haspopup="true" onclick="refs.modalLogin.open()"> <strong>Log In </strong> </button>
           <a href="/sign" class="button is-success">
             <strong>Sign up</strong>
           </a>
-        </div>     
+        </div>      -->
       </div>
     </div>
   </div>

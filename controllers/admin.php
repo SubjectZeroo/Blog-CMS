@@ -34,4 +34,4 @@
 
     // }
 
-    require 'views/admin-blog/index.view.php';
+    require 'views/admin-blog/login.view.php';

@@ -169,6 +169,35 @@
               {
                 echo $e;
       }
-    }           
+    }      
+    
+
+    public function getPosts()
+    {
+        try
+            {
+                $statement = $this->pdo->prepare("SELECT * FROM posts P
+                INNER JOIN categories C ON P.post_category_id = C.category_id
+                INNER JOIN users U ON P.post_user = U.id");
+                $statement->execute();
+                return $statement->fetchAll(PDO::FETCH_CLASS);
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    } 
+
+    public function getComments()
+    {
+        try
+            {
+                $statement = $this->pdo->prepare("SELECT * FROM post_comments PC INNER JOIN posts P ON P.post_id = PC.comment_post_id");
+                $statement->execute();
+                return $statement->fetchAll(PDO::FETCH_CLASS);
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    } 
 
   }

@@ -79,6 +79,20 @@ html {
   
   .sidebar,
   .main {
-    margin-top: 3.25rem;
-    padding-top: 2rem;
+    /* margin-top: 3.25rem;
+    padding-top: 2rem; */
   }
+
+
+  
+.fa-trash{
+color: red;
+}
+
+.fa-edit{
+  background: green;
+}
+
+.fa-eye {
+  background: blue;
+}
