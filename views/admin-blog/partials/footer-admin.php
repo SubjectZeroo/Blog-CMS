@@ -1,4 +1,8 @@
-          <footer class="footer">
+          
+      </main>    
+    </div>
+  </div>
+  <footer class="footer">
             <div class="content has-text-centered">
               <p>
                 <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
@@ -6,10 +10,7 @@
                 is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
               </p>
             </div>
-          </footer>
-      </main>
-    </div>
-  </div>
+      </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="/public/script.js"></script>
 </body>

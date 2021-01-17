@@ -28,9 +28,12 @@
 
 ?>
 <header class="is-clearfix">
-  <div>
-    <h2>Bienvenido Al Sistema <small> <?php  ?></small></h2>
-  </div>
+    <div>
+        <h2>Dashboard</h2>
+        <small>Bienvenido al sistema</small> 
+    </div>
+    <hr>
+    </hr>
 </header>
 <div class="tile is-ancestor ">
   <div class="tile is-parent">

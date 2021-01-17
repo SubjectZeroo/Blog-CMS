@@ -8,7 +8,7 @@
                         <li class="is-flex mb-4">
                             <a href="" class="mr-3">
                                 <figure class="image is-96x96">
-                                    <img src="https://bulma.io/images/placeholders/64x64.png" alt="">
+                                    <img src="../../images/<?= $post->post_image ?>"  alt="">
                                 </figure>
                             </a>
                             <div class="">

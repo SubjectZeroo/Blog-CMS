@@ -2,9 +2,7 @@ html {
     overflow-y: auto;
   }
   
-  body {
-    /* color: #ffffff; */
-  }
+ 
   
   .sidebar {
     padding-left: calc(2rem - 0.75rem);
@@ -79,13 +77,13 @@ html {
   
   .sidebar,
   .main {
-    /* margin-top: 3.25rem;
-    padding-top: 2rem; */
+    margin-top: 3.25rem;
+    padding-top: 2rem;
   }
 
 
   
-.fa-trash{
+/* .fa-trash{
 color: red;
 }
 
@@ -95,4 +93,4 @@ color: red;
 
 .fa-eye {
   background: blue;
-}
+} */

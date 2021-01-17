@@ -1,12 +1,3 @@
-var refs = {
-  modalLogin: {
-    open: function() { document.getElementById('modalLogin').classList.add('is-active');
-    },
-    close:function() { document.getElementById('modalLogin').classList.remove('is-active');
-                      
-    }
-  }
-};
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -36,42 +27,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// $(document).ready(function() {
+$(document).ready(function() {
 
-//   ClassicEditor
-//         .create( document.querySelector( '#editor' ) )
-//         .catch( error => {
-//             console.error( error );
-//         } );
-// });
-
-
-$(document).ready(function () {
-  $(#selectAllBoxes).click(function (event) {
-      if (this.checked) {
-          $('.checkBoxes').each(function () {
-              this.checked = true;
-          });
-      } else {
-          $('.checkBoxes').each(function () {
-              this.checked = false;
-          });
-      }
-  });
+  ClassicEditor
+        .create( document.querySelector( '#editorCreate' ) )
+        .catch( error => {
+            console.error( error );
+        } );
 });
 
+$(document).ready(function() {
 
-function loadUsersOnline() {
+  ClassicEditor
+        .create( document.querySelector( '#editorEdit' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+});
 
-  $.get("navigation-admin.php?onlineusers=result", function(data){
-      $(".useronline").text(data);
-  });
+function handleModals() {
 
+  var modalTriggers = document.querySelectorAll(".modal-trigger");
+  for (i = 0; i < modalTriggers.length; i++) {
+
+    modalTriggers[i].addEventListener("click", function () {
+      var target = this.dataset.modal;
+      console.log(target);
+      var targetContent = document.querySelector(
+        '.modal[data-modal="' + target + '"]'
+      );
+      targetContent.classList.add("is-active");
+    });
+  }
+  var modelClose = document.querySelectorAll(".modal-background,.delete");
+  for (i = 0; i < modelClose.length; i++) {
+    modelClose[i].addEventListener("click", function () {
+      var parentModal = this.closest(".modal");
+      parentModal.classList.remove("is-active");
+    });
+  }
 }
-
-setInterval(function(){
-
-  loadUsersOnline();
-}, 500);
-
-
+handleModals();

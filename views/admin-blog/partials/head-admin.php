@@ -38,5 +38,5 @@
 <?php include  "navigation-admin.php"?>
     <div class="wrapper">
         <div class="">
-            <?php include  "sidebar-admin.php"?>
-            <main id="wrapper" class="main"> 
+            <?php include "sidebar-admin.php"?>
+            <main class="main"> 

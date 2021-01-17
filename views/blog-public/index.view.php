@@ -5,19 +5,19 @@
         <div class="card mt-3">
             <div class="card-image">
                 <!-- <figure class="image is-4by3"> -->
-                <img src="http://placehold.it/1000x420" alt="Placeholder image">
+                <img src="../../images/<?= $post->post_image ?>" alt="Placeholder image">
                 <!-- </figure> -->
             </div>
             <div class="card-content">
                 <div class="media">
                     <div class="media-left">
                         <figure class="image is-64x64">
-                            <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png"
+                            <img class="is-rounded" src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
                                 alt="Placeholder image">
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4"> <a href="/post"><?= $post->post_author?></a></p>
+                        <p class="title is-4"> <a href="/post"><?= $post->post_user?></a></p>
                         <time datetime="2016-1-1"><?= $post->post_date ?></time>
                         <!-- <p class="subtitle is-6">@johnsmith</p> -->
                     </div>

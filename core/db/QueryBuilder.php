@@ -35,7 +35,7 @@
       try {    
       $statement = $this->pdo->prepare($sql);
 
-
+        var_dump($statement);
 
 
       $statement->execute($parameters);
@@ -47,6 +47,7 @@
       // die(var_dump($sql));
     }
 
+ 
 
     public function showPost($table)
     {
@@ -199,5 +200,106 @@
                 echo $e;
       }
     } 
+
+
+    public function getPostUpdate($the_post_id)
+    {
+        try
+            {
+                $statement = $this->pdo->prepare("SELECT * from posts WHERE post_id = $the_post_id");
+                $statement->execute();
+                return $statement->fetch(PDO::FETCH_ASSOC);
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    }
+
+
+
+    public function updatePost($title,$tags,$content,$status,$category_id, $id){
+
+      try
+            {
+                $statement = $this->pdo->prepare("
+                UPDATE posts SET 
+                post_title =  '$title',
+                post_tags  =  '$tags',
+                post_content =  '$content',
+                post_status  =  '$status',
+                post_category_id =  '$category_id',        
+                post_date =   now()               
+                WHERE post_id = '$id' ");
+                $statement->execute();
+                if ($statement->rowCount() > 0)
+                    {
+                        return "exito";
+                    }
+                    else
+                    {
+                        return "fallo";
+                    }
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    }
+
+    public function delete($table, $row, $id){
+      try
+      {
+          $statement = $this->pdo->prepare("DELETE FROM $table WHERE $row = $id");
+          $statement->execute();
+          if ($statement->rowCount() > 0)
+              {
+                  return "exito";
+              }
+              else
+              {
+                  return "fallo";
+              }
+      }catch(Exception $e)
+        {
+          echo $e;
+}
+      
+    }
+
+
+  
+    public function updateComment($status,$id){
+
+      try
+            {
+              if($status == "unapproved"){
+                
+                $statement = $this->pdo->prepare("
+                UPDATE post_comments SET 
+                comment_status = '$status'
+                WHERE id = '$id' ");
+              } else {
+
+                $statement = $this->pdo->prepare("
+                UPDATE post_comments SET 
+                comment_status = '$status'
+                WHERE id = '$id' ");
+
+              }
+             
+                $statement->execute();
+                if ($statement->rowCount() > 0)
+                    {
+                        return "exito";
+                    }
+                    else
+                    {
+                        return "fallo";
+                    }
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    }
+
 
   }
