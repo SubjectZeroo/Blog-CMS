@@ -31,6 +31,9 @@
     <div>
         <h2>Dashboard</h2>
         <small>Bienvenido al sistema</small> 
+        <?=  $_SESSION['username'] ;
+        var_dump($_SESSION);
+        ?>
     </div>
     <hr>
     </hr>

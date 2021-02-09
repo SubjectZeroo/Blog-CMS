@@ -7,6 +7,3 @@ App::get('database')->insert('users',[
 
 
 ]);
-
-// var_dump($_POST);
-  // require('views/add-names.php');

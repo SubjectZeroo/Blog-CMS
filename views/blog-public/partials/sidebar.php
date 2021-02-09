@@ -27,9 +27,9 @@
                         <?php foreach ($categories as $category): ?>                
                                 
                                         <li class="is-flex is-justify-content-space-between"> 
-                                            <a href="/category?category=<?= $category->category_id ?>"><?= $category->category_title ?> 
+                                            <a href="/category?category=<?= $category->post_category_id ?>"><?= $category->category_title ?> 
                                             </a>
-                                            <span class="u-small">(1)</span>
+                                            <span class="u-small">(<?=  $category->categoryCount ?>)</span>
                                         </li>                             
                         <?php endforeach; ?>  
                     </ul>

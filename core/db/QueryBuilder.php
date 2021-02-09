@@ -79,6 +79,22 @@
       }
     }
 
+    public function countCategories()
+    {
+      try
+            {
+                $statement = $this->pdo->prepare("SELECT COUNT(C.category_id) AS categoryCount,P.post_category_id, C.category_title 
+                                                  FROM posts P 
+                                                  INNER JOIN categories C ON P.post_category_id = C.category_id 
+                                                  GROUP BY C.category_id, P.post_category_id");
+                $statement->execute();
+                return $statement->fetchAll(PDO::FETCH_CLASS);
+            }catch(Exception $e)
+              {
+                echo $e;
+      }
+    }
+
     public function getPostsRelevants()
     {
         try
@@ -152,7 +168,7 @@
             {
                 $statement = $this->pdo->prepare("SELECT * FROM users WHERE username = '$username'");
                 $statement->execute();
-                return $statement->fetchAll(PDO::FETCH_CLASS);
+                return $statement;
             }catch(Exception $e)
               {
                 echo $e;
@@ -258,14 +274,10 @@
               {
                   return "fallo";
               }
-      }catch(Exception $e)
-        {
+      } catch(Exception $e){
           echo $e;
-}
-      
+        }  
     }
-
-
   
     public function updateComment($status,$id){
 
@@ -301,5 +313,16 @@
       }
     }
 
-
+//     public function fetchLogin($username, $password) 
+//     {
+//       try
+//       {
+//           $statement = $this->pdo->prepare("SELECT * FROM `users` WHERE username='$username' AND `password` = '$pass_encrypt'");
+//           $statement->execute();
+//           return $statement->fetchAll(PDO::FETCH_CLASS);
+//       }catch(Exception $e)
+//         {
+//           echo $e;
+// }
+//     }
   }

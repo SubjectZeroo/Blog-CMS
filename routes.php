@@ -1,11 +1,11 @@
 <?php
 
 $router->get('', 'controllers/index.php');
-$router->get('sign', 'controllers/sign.php');
 $router->get('post', 'controllers/post.php');
 $router->get('category', 'controllers/category.php');
 $router->get('search', 'controllers/search.php');
 $router->get('admin', 'controllers/admin.php');
+$router->post('login', 'controllers/login.php');
 $router->get('panel', 'controllers/panel.php');
 $router->get('table-posts', 'controllers/controller_posts/table_posts.php');
 $router->post('add-post', 'controllers/controller_posts/add_post.php');

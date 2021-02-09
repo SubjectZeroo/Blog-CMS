@@ -1,8 +1,8 @@
 <?php 
-// $posts = App::get('database')->selectAll('posts');
+
 $posts = App::get('database')->showPost('posts');
 $countPosts = App::get('database')->countPosts();
-$categories = App::get('database')->selectAll('categories');
+$categories = App::get('database')->countCategories();
 $postsRelevants = App::get('database')->getPostsRelevants();
 
 $limit = 6;
