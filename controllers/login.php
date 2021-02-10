@@ -19,6 +19,7 @@
       // $password = crypt($password,   $db_password);
   
       if(password_verify($password,  $db_password)) {
+        $_SESSION['id'] =  $db_id;
         $_SESSION['username'] =  $db_username;
         $_SESSION['user_firtsname'] =  $db_firstname;
         $_SESSION['user_lastname'] =  $db_lastname;

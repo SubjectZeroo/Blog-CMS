@@ -8,6 +8,12 @@
         <section class="modal-card-body">
             <form action="/add-post" method="POST" enctype="multipart/form-data">
                 <div class="field">
+                   
+                    <div class="control">
+                        <input hidden class="input" name="post_user" type="text"  value="<?= $_SESSION['id'] ?>">
+                    </div>
+                </div>
+                <div class="field">
                     <label class="label">Titulo Post</label>
                     <div class="control">
                         <input class="input" name="post_title" type="text" placeholder="Titulo Post">
