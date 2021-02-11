@@ -15,14 +15,19 @@ if(isset($_POST['create_post'])){
         'post_image'    => $_FILES['image']['name'],
         'post_status'   => $_POST['post_status'],
         'post_category_id' => $_POST['post_category']
-
+       
 
         ]);
 
        $post_image_tmp = $_FILES['image']['tmp_name'];
+       $error = $_FILES['image']['error'];
        $post_image = $_FILES['image']['name'];
+     
     //    move_uploaded_file($post_image_temp, "../../images/$post_image");
        move_uploaded_file($post_image_tmp, $targetDir.'/'.$post_image);
-    header("Location: /table-posts"); 
+       var_dump($post_image_tmp, $targetDir.'/'.$post_image);
+       var_dump( $error);
+       var_dump($post_image_tmp);
+   //  header("Location: /table-posts"); 
 
     }

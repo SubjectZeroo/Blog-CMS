@@ -56,7 +56,18 @@
           $limit = 6;
           $page = isset($_GET['page']) ? $_GET['page'] : 1;
           $start = ($page - 1) * $limit;       
-          $statement = $this->pdo->prepare("SELECT * FROM {$table} WHERE post_status = 'published' LIMIT $start, $limit");
+          $statement = $this->pdo->prepare("SELECT P.post_id, 
+                                                   P.post_category_id, 
+                                                   P.post_title, 
+                                                   P.post_date, 
+                                                   P.post_image, 
+                                                   P.post_content, 
+                                                   P.post_tags, 
+                                                   P.post_status, 
+                                                   U.username                        
+                                                   FROM {$table} P  
+                                                   INNER JOIN users U ON  P.post_user = U.id WHERE post_status = 'published' 
+                                                   LIMIT $start, $limit ");
           $statement->execute();
           return $statement->fetchAll(PDO::FETCH_CLASS);
       }
@@ -313,16 +324,4 @@
       }
     }
 
-//     public function fetchLogin($username, $password) 
-//     {
-//       try
-//       {
-//           $statement = $this->pdo->prepare("SELECT * FROM `users` WHERE username='$username' AND `password` = '$pass_encrypt'");
-//           $statement->execute();
-//           return $statement->fetchAll(PDO::FETCH_CLASS);
-//       }catch(Exception $e)
-//         {
-//           echo $e;
-// }
-//     }
   }

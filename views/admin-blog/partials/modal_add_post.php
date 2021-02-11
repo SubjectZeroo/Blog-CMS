@@ -7,8 +7,7 @@
         </header>
         <section class="modal-card-body">
             <form action="/add-post" method="POST" enctype="multipart/form-data">
-                <div class="field">
-                   
+                <div class="field">                
                     <div class="control">
                         <input hidden class="input" name="post_user" type="text"  value="<?= $_SESSION['id'] ?>">
                     </div>
@@ -44,7 +43,7 @@
                 </div>
                 <div class="file">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="image">
+                        <input class="file-input" type="file" name="image" id="image">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-upload"></i>
@@ -70,7 +69,6 @@
             </section>
             <footer class="modal-card-foot">
                 <button class="button is-success" name="create_post">Guardar Cambios</button>
-
             </footer>
         </form>
     </div>

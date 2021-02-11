@@ -4,9 +4,9 @@
     <?php foreach ($posts as $post): ?>
         <div class="card mt-3">
             <div class="card-image">
-                <!-- <figure class="image is-4by3"> -->
-                <img src="../../images/<?= $post->post_image ?>" alt="Placeholder image">
-                <!-- </figure> -->
+                <figure class="image is-4by3">
+                    <img src="../../images/<?= $post->post_image ?>" alt="Placeholder image">
+                </figure>
             </div>
             <div class="card-content">
                 <div class="media">
@@ -17,7 +17,7 @@
                         </figure>
                     </div>
                     <div class="media-content">
-                        <p class="title is-4"> <a href="/post"><?= $post->post_user?></a></p>
+                        <p class="title is-4"><?= $post->username?></p>
                         <time datetime="2016-1-1"><?= $post->post_date ?></time>
                         <!-- <p class="subtitle is-6">@johnsmith</p> -->
                     </div>
