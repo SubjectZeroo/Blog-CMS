@@ -4,8 +4,8 @@ Pequeno proyecto que simula un blog que tiene un cms donde se puede administrar 
 
 ## Tabla de Contenidos
 
-- [Instalacion](#installation)
-- [Uso](#usage)
+- [Instalacion](#Instalacion)
+- [Uso](#uso)
 
 
 ## Instalacion
@@ -16,10 +16,10 @@ Pequeno proyecto que simula un blog que tiene un cms donde se puede administrar 
 - Crear una BD llamada cms y volcar los datos del archivo cms.sql
 
 
-## Uso
+## Tecnologias Usadas
 
-- Para entrar al admin cuando inicien el proyecto agregar el /admin
+- BULMA
+- FONT AWESOME 5
+- Jquery
 
-
-Feel free to remove any sections that aren't applicable to your project.
 
