@@ -8,7 +8,7 @@
                         <li class="is-flex mb-4">
                             <a href="" class="mr-3">
                                 <figure class="image is-96x96">
-                                    <img src="../../images/<?= $post->post_image ?>"  alt="">
+                                    <img src="../../images/<?= $postRelevant->post_image ?>"  alt="">
                                 </figure>
                             </a>
                             <div class="">

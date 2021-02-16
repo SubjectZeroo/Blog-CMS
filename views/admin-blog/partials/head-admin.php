@@ -3,11 +3,11 @@
 
 <?php
  
-// if(!isset($_SESSION['user_role'])){
-//     // if($_SESSION['user_role'] !== 'admin'){
-//         header("Location: /");
-//     // }
-//  } 
+if(!isset($_SESSION['user_role'])){
+    if($_SESSION['user_role'] !== 'admin'){
+        header("Location: /");
+    }
+ } 
 
 ?>
 <!DOCTYPE html>
@@ -19,15 +19,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Mini - CRM</title>
-    <!-- Custom CSS -->
-   
+    <title>Dashboard - CMS</title> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-   
-    <!-- Custom Fonts -->
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>

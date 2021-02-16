@@ -64,9 +64,13 @@
                                                    P.post_content, 
                                                    P.post_tags, 
                                                    P.post_status, 
-                                                   U.username                        
+                                                   U.username,
+                                                   C.category_title                     
                                                    FROM {$table} P  
-                                                   INNER JOIN users U ON  P.post_user = U.id WHERE post_status = 'published' 
+                                                   INNER JOIN users U ON  P.post_user = U.id 
+                                                   INNER JOIN categories C ON  P.post_category_id = C.category_id
+                                                
+                                                   WHERE post_status = 'published' 
                                                    LIMIT $start, $limit ");
           $statement->execute();
           return $statement->fetchAll(PDO::FETCH_CLASS);
@@ -110,7 +114,12 @@
     {
         try
             {
-                $statement = $this->pdo->prepare("SELECT P.post_id, P.post_title , P.post_date,COUNT(PC.comment_post_id) FROM posts P INNER JOIN post_comments PC ON P.post_id = PC.comment_post_id  GROUP BY P.post_id HAVING COUNT(*) >= 1 LIMIT 5");
+                $statement = $this->pdo->prepare("SELECT P.post_id, 
+                                                         P.post_title , 
+                                                         P.post_date,
+                                                         P.post_image, 
+                                                         COUNT(PC.comment_post_id) 
+                                                         FROM posts P INNER JOIN post_comments PC ON P.post_id = PC.comment_post_id  GROUP BY P.post_id HAVING COUNT(*) >= 1 LIMIT 5");
                 $statement->execute();
                 return $statement->fetchAll(PDO::FETCH_CLASS);
             }catch(Exception $e)
@@ -150,7 +159,21 @@
     {
         try
             {
-                $statement = $this->pdo->prepare("SELECT * from posts WHERE post_category_id =  $post_category");
+                $statement = $this->pdo->prepare("SELECT  
+                                                   P.post_id, 
+                                                   P.post_category_id, 
+                                                   P.post_title, 
+                                                   P.post_date, 
+                                                   P.post_image, 
+                                                   P.post_content, 
+                                                   P.post_tags, 
+                                                   P.post_status, 
+                                                   U.username,
+                                                   C.category_title
+                                                   from posts P
+                                                  INNER JOIN users U ON  P.post_user = U.id
+                                                  INNER JOIN categories C ON  P.post_category_id = C.category_id
+                                                  WHERE P.post_category_id =  $post_category");
                 $statement->execute();
                 return $statement->fetchAll(PDO::FETCH_CLASS);
             }catch(Exception $e)

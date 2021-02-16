@@ -4,33 +4,35 @@
     <?php foreach ($PostsCategories as $PostCategory): ?>
         <div class="card mt-3">
             <div class="card-image">
-                <!-- <figure class="image is-4by3"> -->
-                <img src="http://placehold.it/1000x420" alt="Placeholder image">
-                <!-- </figure> -->
+                <figure class="image is-2by1">
+                     <img src="../../images/<?= $PostCategory->post_image ?>" alt="Placeholder image">
+                </figure>
             </div>
             <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-64x64">
-                            <img class="is-rounded" src="https://bulma.io/images/placeholders/96x96.png"
-                                alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="media-content">
-                        <p class="title is-4"> <a href="index.php"><?=$PostCategory->post_author?></a></p>
-                        <time datetime="2016-1-1"> <?= $PostCategory->post_date ?></time>
-                        <!-- <p class="subtitle is-6">@johnsmith</p> -->
+            <div class="media">
+                    <div class="content">
+                        <h1 class="title">
+                            <a href="/post?p_id=<?=  $PostCategory->post_id ;?>"><?=  $PostCategory->post_title ?></a>
+                            <span class="tag is-primary is-medium"><?= $PostCategory->category_title ?></span>
+                        </h1>
                     </div>
                 </div>
-                <div class="content">
-                    <h1 class="title">
-                   
-                        <a href="post.php?p_id=<?= $PostCategory->post_id ?>"><?= $PostCategory->post_title ?></a>
-                    </h1>
-                    <?=  $PostCategory->post_content?>
-
-                    <a class="btn btn-primary" href="/post?p_id=<?= $PostCategory->post_id ?>">Leer Mas... </a>
-                </div>
+                <div class="columns">
+                    <div class="column is-1 mr-2">
+                            <figure class="image is-48x48">
+                                <img class="is-rounded" src="https://images.unsplash.com/photo-1546539782-6fc531453083?ixlib=rb-1.2.1&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&ixid=eyJhcHBfaWQiOjE3Nzg0fQ"
+                                    alt="Placeholder image">
+                            </figure>
+                    </div>
+                    <div class="column" >
+                            <div class="columns is-align-items-center" >
+                                <div class="column">
+                                    <p class=""><?=  $PostCategory->username?></p>                         
+                                    <span><?=  $PostCategory->post_date ?></span>
+                                </div>                                 
+                            </div>                        
+                    </div>
+                </div>   
             </div>
         </div>
     <?php endforeach; ?> 
